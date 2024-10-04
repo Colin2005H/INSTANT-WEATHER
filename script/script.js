@@ -22,17 +22,17 @@ async function get_INSEE_code_from_CP(cp) {
 //fonction pour afficher les résultats dans le menu déroulant
 function displayResultsCities(codesInsee) {
   const resultSelect = document.getElementById("resultSelect");
-  
+
   resultSelect.innerHTML = "";
 
   //si aucun code INSEE n'est trouvé
   if (codesInsee.length === 0) {
     const noResultOption = document.createElement("option");
     noResultOption.textContent = "Aucun code INSEE trouvé pour ce code postal";
-    noResultOption.disabled = true; 
+    noResultOption.disabled = true;
     resultSelect.appendChild(noResultOption);
   } else {
-    // Ajout des résultats sous forme d'options dans le select
+    //ajout des résultats sous forme d'options dans le select
     codesInsee.forEach(([code, nom]) => {
       const option = document.createElement("option");
       option.value = code;
@@ -42,33 +42,51 @@ function displayResultsCities(codesInsee) {
   }
 }
 
-// Ajout d'un gestionnaire d'événements pour le bouton "Valider"
-document.getElementById("buttonCodePostal").addEventListener("click", async function() {
-  const inputCodePostal = document.getElementById("inputCodePostal").value;
+document
+  .getElementById("buttonCodePostal")
+  .addEventListener("click", async function () {
+    const inputCodePostal = document.getElementById("inputCodePostal").value;
 
-  if (inputCodePostal) {
-    const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-    displayResultsCities(codesInsee);  // Appel de la fonction pour afficher les résultats dans le select
-  } else {
-    console.error("Veuillez entrer un code postal valide.");
-  }
-});
+    if (inputCodePostal) {
+      const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
+      displayResultsCities(codesInsee); // Appel de la fonction pour afficher les résultats dans le select
+    } else {
+      console.error("Veuillez entrer un code postal valide.");
+    }
+  });
 
+document
+  .getElementById("ButtonCityChoice")
+  .addEventListener("click", function () {
+    const selectedOption =
+      document.getElementById("resultSelect").selectedOptions[0];
+    if (selectedOption) {
+      document.getElementById("city").innerHTML = selectedOption.textContent;
+    } else {
+      console.error("Aucune ville sélectionnée.");
+    }
+  });
 
 async function get_weather_info_from_insee_code(insee_code, day_from_today) {
-  request = "https://api.meteo-concept.com/api/forecast/daily/" + day_from_today + "?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" + insee_code;
+  request =
+    "https://api.meteo-concept.com/api/forecast/daily/" +
+    day_from_today +
+    "?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" +
+    insee_code;
   weather_info = [];
   try {
     promise = await fetch(request);
     result = await promise.json();
     weather_info = result;
   } catch (e) {}
-  
+
   return weather_info;
 }
 
 async function get_location_info_from_insee_code(insee_code) {
-  request = "https://api.meteo-concept.com/api/location/city?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" + insee_code;
+  request =
+    "https://api.meteo-concept.com/api/location/city?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" +
+    insee_code;
   location_info = [];
   try {
     promise = await fetch(request);
@@ -88,7 +106,6 @@ async function get_location_info_from_insee_code(insee_code) {
 //   console.log(location_info);
 // };
 
-
 document
   .getElementById("buttonCodePostal")
   .addEventListener("click", async function () {
@@ -96,4 +113,3 @@ document
     insee_code = await get_INSEE_code_from_CP(+cp);
     console.log(insee_code);
   });
-

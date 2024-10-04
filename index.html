@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="shortcut icon" href="image/meteo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@125,300..700&display=swap"
+      rel="stylesheet" />
     <script defer src="script/script.js"></script>
     <title>Instant Weather</title>
   </head>
@@ -12,17 +17,21 @@
     <header>
       <h1 id="title">Instant Weather</h1>
     </header>
-    <div class="codePostal">
-      <label id="labelCodePostal">Code Postal</label>
+    <div class="block">
+      <label id="labelCodePostal">Code Postal :</label>
       <input id="inputCodePostal" placeholder="14123" />
       <button id="buttonCodePostal">Valider</button>
     </div>
-
-    <div id="resultContainer">
+    <div class="block">
       <h2>Résultats :</h2>
-      <select id="resultSelect" ></select> <!-- dropdown menu -->
+      <select id="resultSelect"></select>
+      <button id="ButtonCityChoice">Valider</button>
+      <!-- dropdown menu -->
     </div>
-
+    <div class="block">
+      <h2>Ville :</h2>
+      <h2 id="city"></h2>
+    </div>
     <footer></footer>
   </body>
 </html>

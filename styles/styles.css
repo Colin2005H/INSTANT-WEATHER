@@ -7,20 +7,28 @@
 body {
   background: linear-gradient(to top, var(--bleu), var(--bleu_clair));
   background-attachment: fixed;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }
 
 header {
-  width: 100%;
+  width: 40%;
   display: flex;
-  background-color: var(--bleu);
-  color: white;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vw;
+  padding: 1vw;
+  background-color: white;
+  color: var(--bleu);
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 0.5vw;
-  -webkit-box-shadow: 0px 0px 20px -2px #020000;
-  box-shadow: 0px 0px 20px -5px #000000;
+  border-radius: 1vw;
+  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
+  box-shadow: 0px 0px 10px -2px #ffffff;
 }
 
 .title {
@@ -28,17 +36,10 @@ header {
   color: var(--bleu);
 }
 
-.codePostal {
-  display: flex;
-  margin-top: 0.5vw;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
 #labelCodePostal {
   color: white;
   display: flex;
+  color: var(--bleu);
 }
 
 #inputCodePostal {
@@ -49,4 +50,34 @@ header {
   text-align: center;
   justify-content: left;
   text-align: center;
+  border-style: solid;
+  border-width: 0.1em;
+  border-color: var(--bleu);
+}
+
+.buttonCodePostal {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  color: var(--bleu);
+}
+
+.block {
+  font-family: "Fredoka", sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  gap: 0.5vw;
+  background-color: white;
+  padding: 2vw;
+  border-radius: 1vw;
+  color: var(--bleu);
+  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
+  box-shadow: 0px 0px 10px -2px #ffffff;
 }
