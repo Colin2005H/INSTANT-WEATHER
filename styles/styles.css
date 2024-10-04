@@ -1,0 +1,28 @@
+:root {
+  --bleu: #135fb7;
+  --bleu_clair: #2c96e2;
+  --box-shadow: 7px 5px 15px -4px rgba(0, 0, 0, 0.75);
+}
+
+body {
+  background: linear-gradient(to top, var(--bleu), var(--bleu_clair));
+  background-attachment: fixed;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  background-color: var(--bleu);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 0.5vw;
+  -webkit-box-shadow: 0px 0px 20px -2px #020000;
+  box-shadow: 0px 0px 20px -5px #000000;
+}
+
+.title {
+  font-size: 6em;
+  color: var(--bleu);
+}
