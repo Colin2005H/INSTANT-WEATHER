@@ -21,7 +21,7 @@ document
   .getElementById("buttonCodePostal")
   .addEventListener("click", async function () {
     cp = document.getElementById("inputCodePostal").textContent;
-    insee_code = await get_INSEE_code_from_CP(cp);
+    insee_code = await get_INSEE_code_from_CP(+cp);
     console.log(insee_code);
   });
 
