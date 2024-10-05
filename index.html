@@ -17,21 +17,21 @@
     <header>
       <h1 id="title">Instant Weather</h1>
     </header>
-    <div class="block">
-      <label id="labelCodePostal">Code Postal :</label>
-      <input id="inputCodePostal" placeholder="14123" />
-      <button id="buttonCodePostal">Valider</button>
+    <div id="main">
+      <div class="block-main">
+        <label id="labelCodePostal">Code Postal :</label>
+        <input id="inputCodePostal" placeholder="14123" />
+        <button id="buttonCodePostal">Valider</button>
+      </div>
+      <div class="block-main">
+        <label id="results">Résultats :</label>
+        <select id="resultSelect"></select>
+        <button id="ButtonCityChoice">Valider</button>
+        <!-- dropdown menu -->
+      </div>
     </div>
-    <div class="block">
-      <h2>Résultats :</h2>
-      <select id="resultSelect"></select>
-      <button id="ButtonCityChoice">Valider</button>
-      <!-- dropdown menu -->
-    </div>
-    <div class="block">
-      <h2>Ville :</h2>
-      <h2 id="city"></h2>
-    </div>
+    <div id="forecast"></div>
+
     <footer></footer>
   </body>
 </html>
