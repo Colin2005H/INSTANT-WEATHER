@@ -105,7 +105,7 @@ function displayWeatherForecast(weatherData) {
   // Vider le contenu précédent du div
   forecastDiv.innerHTML = "";
 
-  // Créer le tableau
+  // créer le tableau
   const table = document.createElement("table");
   table.classList.add("weather-table");
   // Créer l'en-tête du tableau
@@ -114,7 +114,8 @@ function displayWeatherForecast(weatherData) {
     "Date",
     "Température Min",
     "Température Max",
-    "Résumé Météo",
+    "Probabilité de pluie",
+    "Ensoleillement",
   ];
   headers.forEach((headerText) => {
     const th = document.createElement("th");
@@ -141,9 +142,18 @@ function displayWeatherForecast(weatherData) {
   tempMaxCell.classList.add("weather-data");
   row.appendChild(tempMaxCell);
 
+  const rainProbCell = document.createElement("td");
+  rainProbCell.textContent = `${weatherData.probarain}%`;
+  rainProbCell.classList.add("weather-data");
+  row.appendChild(rainProbCell);
+
+  const sunCell = document.createElement("td");
+  sunCell.textContent = `${weatherData.sun_hours}h`;
+  sunCell.classList.add("weather-data");
+  row.appendChild(sunCell);
+
   table.appendChild(row);
 
-  // Ajouter le tableau dans le div "forecast"
   forecastDiv.appendChild(table);
 }
 
@@ -160,7 +170,7 @@ document
       if (weatherInfo && weatherInfo.forecast) {
         displayWeatherForecast(weatherInfo.forecast);
       } else {
-        console.error("Impossible de récupérer les informations météo.");
+        console.error("Impossible de récupérer les informations météo");
       }
     } else {
       console.error("Aucune ville sélectionnée.");

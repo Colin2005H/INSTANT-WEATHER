@@ -5,10 +5,6 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(to top, var(--bleu), white);
   background-attachment: fixed;
   font-family: "Fredoka", sans-serif;
@@ -19,18 +15,31 @@ body {
 }
 
 header {
-  width: 40%;
+  height: 5vw;
   display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1vw;
-  padding: 1vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 2vw;
+}
+
+#logo {
+  width: 6vw;
+  margin-right: 2vw;
+}
+
+#head-bar {
+  display: flex;
   color: var(--bleu);
   align-items: center;
   justify-content: center;
-  text-align: center;
-  border-radius: 1vw;
+  width: 100%;
+}
+
+.title {
+  font-size: 6em;
+  color: var(--bleu);
+  margin-left: 2vw;
 }
 
 #main {
@@ -42,10 +51,6 @@ header {
   border-radius: 3vw;
   -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
   box-shadow: 0px 0px 10px -2px #ffffff;
-}
-.title {
-  font-size: 6em;
-  color: var(--bleu);
 }
 
 #labelCodePostal {
@@ -70,6 +75,8 @@ header {
 }
 
 .buttonCodePostal {
+  font-family: "Fredoka", sans-serif;
+  background-color: var(--bleu);
   display: flex;
   flex-direction: column;
   margin-top: 2vw;
