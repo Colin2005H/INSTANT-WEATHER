@@ -9,13 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@125,300..700&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
     <script defer src="script/script.js"></script>
     <script src="https://kit.fontawesome.com/04e34c72ac.js"></script>
     <title>Instant Weather</title>
@@ -28,14 +30,17 @@
       </div>
     </nav>
     <div id="search">
-      <label id="labelCodePostal" style="display: none">Code Postal :</label>
-      <input
-        id="inputCodePostal"
-        placeholder="Code postal"
-        maxlength="5"
-        pattern="\d{5}"
-        title="Veuillez entrer un code postal de 5 chiffres" />
-      <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
+      <form id="formCodePostal">
+        <label id="labelCodePostal" style="display: none">Code Postal :</label>
+        <input
+          id="inputCodePostal"
+          placeholder="Code postal"
+          maxlength="5"
+          pattern="\d{5}"
+          title="Veuillez entrer un code postal de 5 chiffres"
+        />
+        <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
+      </form>
     </div>
     <div class="card-results" id="card-results" style="display: none">
       <label id="results" style="display: none">Résultats :</label>
@@ -46,6 +51,7 @@
 
     <div id="forecast"></div>
 
+    <button id="resetButton">Refaire une Recherche</button>
     <footer></footer>
   </body>
 </html>

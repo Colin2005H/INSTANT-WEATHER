@@ -177,3 +177,9 @@ document.getElementById("check").addEventListener("click", async function () {
     console.error("Aucune ville sélectionnée.");
   }
 });
+
+document
+  .getElementById("resetButton")
+  .addEventListener("click", async function () {
+    document.getElementById("formCodePostal").reset();
+  });
