@@ -93,11 +93,12 @@ document
     if (inputCodePostal) {
       const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
       displayResultsCities(codesInsee);
+      cardResults = document.getElementById("card-results");
+      cardResults.style.display = "flex";
+      cardResults.style.animation = "slideIn 0.5s forwards";
     } else {
       console.error("Veuillez entrer un code postal valide.");
     }
-    blockMain = document.getElementById("blockMain");
-    blockMain.style.display = "flex";
   });
 
 // Fonction pour afficher les résultats météo dans un tableau
@@ -156,27 +157,23 @@ function displayWeatherForecast(weatherData) {
 
   table.appendChild(row);
 
-  forecastDiv.appendChild(table);
+  forecastDiv.appendChild(table).style.animation = "slideIn 0.5s forwards";
 }
 
-document
-  .getElementById("ButtonCityChoice")
-  .addEventListener("click", async function () {
-    const selectedOption =
-      document.getElementById("resultSelect").selectedOptions[0];
-    if (selectedOption) {
-      const inseeCode = selectedOption.value;
+document.getElementById("check").addEventListener("click", async function () {
+  const selectedOption =
+    document.getElementById("resultSelect").selectedOptions[0];
+  if (selectedOption) {
+    const inseeCode = selectedOption.value;
 
-      const weatherInfo = await get_weather_info_from_insee_code(inseeCode, 0);
+    const weatherInfo = await get_weather_info_from_insee_code(inseeCode, 0);
 
-      if (weatherInfo && weatherInfo.forecast) {
-        displayWeatherForecast(weatherInfo.forecast);
-      } else {
-        console.error("Impossible de récupérer les informations météo");
-      }
+    if (weatherInfo && weatherInfo.forecast) {
+      displayWeatherForecast(weatherInfo.forecast);
     } else {
-      console.error("Aucune ville sélectionnée.");
+      console.error("Impossible de récupérer les informations météo");
     }
-  });
-
- 
+  } else {
+    console.error("Aucune ville sélectionnée.");
+  }
+});
