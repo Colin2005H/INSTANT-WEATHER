@@ -383,3 +383,13 @@ document
       console.error("Aucune ville sélectionnée.");
     }
   });
+
+  document
+  .getElementById("reset-button")
+  .addEventListener("click", async function () {
+    document.getElementById("card-results").style.display = "none";
+    document.getElementById("inputCodePostal").value = "";
+    document.getElementById("search-button").style.display = "flex";
+    document.getElementById("reset-button").style.display = "none";
+    document.getElementById("forecast").innerHTML = "";
+  });
