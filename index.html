@@ -9,13 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@125,300..700&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
     <script defer src="script/script.js"></script>
     <script src="https://kit.fontawesome.com/04e34c72ac.js"></script>
     <title>Instant Weather</title>
@@ -34,9 +36,15 @@
         type="number"
         placeholder="Code postal"
         maxlength="5"
-        pattern=/^[0-9]{5}$/g
-        title="Veuillez entrer un code postal de 5 chiffres" />
+        pattern="\d{5}"
+        title="Veuillez entrer un code postal de 5 chiffres"
+      />
       <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
+      <i
+        class="fa-solid fa-rotate-right"
+        id="reset-button"
+        style="display: none"
+      ></i>
     </div>
     <div class="card-results" id="card-results" style="display: none">
       <label id="results" style="display: none">Résultats :</label>
@@ -46,7 +54,6 @@
     </div>
 
     <div id="forecast"></div>
-
     <footer></footer>
   </body>
 </html>
