@@ -39,6 +39,40 @@ async function get_weather_info_from_insee_code(insee_code, day_from_today) {
   return weather_info;
 }
 
+async function get_forcast_info(code_insee, nb_day){
+  request = "https://api.meteo-concept.com/api/forecast/daily?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" + code_insee
+  api_reponce = 0;
+
+  try {
+    promise = await fetch(request);
+    result = await promise.json();
+    api_reponce = result;
+  } catch (e) {}
+
+  api_forcast_reponce = api_reponce.forecast;
+  forcast_info = [];
+
+  for( i = 0; i < nb_day; i++){
+    day_info = 
+    {
+      "latitude" : api_reponce.city.latitude, 
+      "longitude" : api_reponce.city.longitude,
+      "weather" : api_forcast_reponce[i].weather,
+      "temp_min" : api_forcast_reponce[i].tmin,
+      "temp_max" : api_forcast_reponce[i].tmax,
+      "rain_prob" : api_forcast_reponce[i].probarain,
+      "rain_amont" : api_forcast_reponce[i].etp,
+      "sunshine_hour" : api_forcast_reponce[i].sun_hour,
+      "avg_wind" : api_forcast_reponce[i].wind10m,
+      "wind_direction": api_forcast_reponce[i].dirwind10m
+    };
+    
+    
+    forcast_info[i] = day_info;
+  }
+  return forcast_info;
+}
+
 async function get_location_info_from_insee_code(insee_code) {
   request =
     "https://api.meteo-concept.com/api/location/city?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" +
@@ -51,17 +85,14 @@ async function get_location_info_from_insee_code(insee_code) {
   } catch (e) {}
   return location_info;
 }
-/*
+
 //for function test
 window.onload = async function () {
   insee_code = await get_INSEE_code_from_CP(14123);
-  console.log(insee_code);
-  weather_info = await get_weather_info_from_insee_code(insee_code[0][0], 0);
-  console.log(weather_info);
-  location_info = await get_location_info_from_insee_code(insee_code);
-  console.log(location_info);
+  forcast_info = await get_forcast_info(insee_code, 3);
+  console.log(forcast_info);
 };
-*/
+
 //fonction pour afficher les résultats dans le menu déroulant
 function displayResultsCities(codesInsee) {
   const resultSelect = document.getElementById("resultSelect");
