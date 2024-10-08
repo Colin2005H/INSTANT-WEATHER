@@ -1,100 +1,103 @@
-const int_weather_to_text = 
-{
-  0 : "Soleil",
-	1 : "Peu nuageux",
-	2 : "Ciel voilé",
-	3 : "Nuageux",
-	4 : "Très nuageux",
-	5 : "Couvert",
-	6 : "Brouillard",
-	7 : "Brouillard givrant",
-	10 : "Pluie faible",
-	11 : "Pluie modérée",
-	12 : "Pluie forte",
-	13 : "Pluie faible verglaçante",
-	14 : "Pluie modérée verglaçante",
-	15 : "Pluie forte verglaçante",
-	16 : "Bruine",
-	20 : "Neige faible",
-	21 : "Neige modérée",
-	22 : "Neige forte",
-	30 : "Pluie et neige mêlées faibles",
-	31 : "Pluie et neige mêlées modérées",
-	32 : "Pluie et neige mêlées fortes",
-	40 : "Averses de pluie locales et faibles",
-	41 : "Averses de pluie locales",
-	42 : "Averses locales et fortes",
-	43 : "Averses de pluie faibles",
-	44 : "Averses de pluie",
-	45 : "Averses de pluie fortes",
-	46 : "Averses de pluie faibles et fréquentes",
-	47 : "Averses de pluie fréquentes",
-	48 : "Averses de pluie fortes et fréquentes",
-	60 : "Averses de neige localisées et faibles",
-	61 : "Averses de neige localisées",
-	62 : "Averses de neige localisées et fortes",
-	63 : "Averses de neige faibles",
-	64 : "Averses de neige",
-	65 : "Averses de neige fortes",
-	66 : "Averses de neige faibles et fréquentes",
-	67 : "Averses de neige fréquentes",
-	68 : "Averses de neige fortes et fréquentes",
-	70 : "Averses de pluie et neige mêlées localisées et faibles",
-	71 : "Averses de pluie et neige mêlées localisées",
-	72 : "Averses de pluie et neige mêlées localisées et fortes",
-	73 : "Averses de pluie et neige mêlées faibles",
-	74 : "Averses de pluie et neige mêlées",
-	75 : "Averses de pluie et neige mêlées fortes",
-	76 : "Averses de pluie et neige mêlées faibles et nombreuses",
-	77 : "Averses de pluie et neige mêlées fréquentes",
-	78 : "Averses de pluie et neige mêlées fortes et fréquentes",
-	100 : "Orages faibles et locaux",
-	101 : "Orages locaux",
-	102 : "Orages fort et locaux",
-	103 : "Orages faibles",
-	104 : "Orages",
-	105 : "Orages forts",
-	106 : "Orages faibles et fréquents",
-	107 : "Orages fréquents",
-	108 : "Orages forts et fréquents",
-	120 : "Orages faibles et locaux de neige ou grésil",
-	121 : "Orages locaux de neige ou grésil",
-	122 : "Orages locaux de neige ou grésil",
-	123 : "Orages faibles de neige ou grésil",
-	124 : "Orages de neige ou grésil",
-	125 : "Orages de neige ou grésil",
-	126 : "Orages faibles et fréquents de neige ou grésil",
-	127 : "Orages fréquents de neige ou grésil",
-	128 : "Orages fréquents de neige ou grésil",
-	130 : "Orages faibles et locaux de pluie et neige mêlées ou grésil",
-	131 : "Orages locaux de pluie et neige mêlées ou grésil",
-	132 : "Orages fort et locaux de pluie et neige mêlées ou grésil",
-	133 : "Orages faibles de pluie et neige mêlées ou grésil",
-	134 : "Orages de pluie et neige mêlées ou grésil",
-	135 : "Orages forts de pluie et neige mêlées ou grésil",
-	136 : "Orages faibles et fréquents de pluie et neige mêlées ou grésil",
-	137 : "Orages fréquents de pluie et neige mêlées ou grésil",
-	138 : "Orages forts et fréquents de pluie et neige mêlées ou grésil",
-	140 : "Pluies orageuses",
-	141 : "Pluie et neige mêlées à caractère orageux",
-	142 : "Neige à caractère orageux",
-	210 : "Pluie faible intermittente",
-	211 : "Pluie modérée intermittente",
-	212 : "Pluie forte intermittente",
-	220 : "Neige faible intermittente",
-	221 : "Neige modérée intermittente",
-	222 : "Neige forte intermittente",
-	230 : "Pluie et neige mêlées",
-	231 : "Pluie et neige mêlées",
-	232 : "Pluie et neige mêlées",
-	235 : "Averses de grêle",
-}
+//convert weather in to text
+const weather_to_text = new Map();
+weather_to_text.set(0 , "Soleil");
+weather_to_text.set(1 , "Peu nuageux");
+weather_to_text.set(2 , "Ciel voilé");
+weather_to_text.set(3 , "Nuageux");
+weather_to_text.set(4 , "Très nuageux");
+weather_to_text.set(5 , "Couvert");
+weather_to_text.set(6 , "Brouillard");
+weather_to_text.set(7 , "Brouillard givrant");
+weather_to_text.set(10 , "Pluie faible");
+weather_to_text.set(11 , "Pluie modérée");
+weather_to_text.set(12 , "Pluie forte");
+weather_to_text.set(13 , "Pluie faible verglaçante");
+weather_to_text.set(14 , "Pluie modérée verglaçante");
+weather_to_text.set(15 , "Pluie forte verglaçante");
+weather_to_text.set(16 , "Bruine");
+weather_to_text.set(20 , "Neige faible");
+weather_to_text.set(21 , "Neige modérée");
+weather_to_text.set(22 , "Neige forte");
+weather_to_text.set(30 , "Pluie et neige mêlées faibles");
+weather_to_text.set(31 , "Pluie et neige mêlées modérées");
+weather_to_text.set(32 , "Pluie et neige mêlées fortes");
+weather_to_text.set(40 , "Averses de pluie locales et faibles");
+weather_to_text.set(41 , "Averses de pluie locales");
+weather_to_text.set(42 , "Averses locales et fortes");
+weather_to_text.set(43 , "Averses de pluie faibles");
+weather_to_text.set(44 , "Averses de pluie");
+weather_to_text.set(45 , "Averses de pluie fortes");
+weather_to_text.set(46 , "Averses de pluie faibles et fréquentes");
+weather_to_text.set(47 , "Averses de pluie fréquentes");
+weather_to_text.set(48 , "Averses de pluie fortes et fréquentes");
+weather_to_text.set(60 , "Averses de neige localisées et faibles");
+weather_to_text.set(61 , "Averses de neige localisées");
+weather_to_text.set(62 , "Averses de neige localisées et fortes");
+weather_to_text.set(63 , "Averses de neige faibles");
+weather_to_text.set(64 , "Averses de neige");
+weather_to_text.set(65 , "Averses de neige fortes");
+weather_to_text.set(66 , "Averses de neige faibles et fréquentes");
+weather_to_text.set(67 , "Averses de neige fréquentes");
+weather_to_text.set(68 , "Averses de neige fortes et fréquentes");
+weather_to_text.set(70 , "Averses de pluie et neige mêlées localisées et faibles");
+weather_to_text.set(71 , "Averses de pluie et neige mêlées localisées");
+weather_to_text.set(72 , "Averses de pluie et neige mêlées localisées et fortes");
+weather_to_text.set(73 , "Averses de pluie et neige mêlées faibles");
+weather_to_text.set(74 , "Averses de pluie et neige mêlées");
+weather_to_text.set(75 , "Averses de pluie et neige mêlées fortes");
+weather_to_text.set(76 , "Averses de pluie et neige mêlées faibles et nombreuses");
+weather_to_text.set(77 , "Averses de pluie et neige mêlées fréquentes");
+weather_to_text.set(78 , "Averses de pluie et neige mêlées fortes et fréquentes");
+weather_to_text.set(100 , "Orages faibles et locaux");
+weather_to_text.set(101 , "Orages locaux");
+weather_to_text.set(102 , "Orages fort et locaux");
+weather_to_text.set(103 , "Orages faibles");
+weather_to_text.set(104 , "Orages");
+weather_to_text.set(105 , "Orages forts");
+weather_to_text.set(106 , "Orages faibles et fréquents");
+weather_to_text.set(107 , "Orages fréquents");
+weather_to_text.set(108 , "Orages forts et fréquents");
+weather_to_text.set(120 , "Orages faibles et locaux de neige ou grésil");
+weather_to_text.set(121 , "Orages locaux de neige ou grésil");
+weather_to_text.set(122 , "Orages locaux de neige ou grésil");
+weather_to_text.set(123 , "Orages faibles de neige ou grésil");
+weather_to_text.set(124 , "Orages de neige ou grésil");
+weather_to_text.set(125 , "Orages de neige ou grésil");
+weather_to_text.set(126 , "Orages faibles et fréquents de neige ou grésil");
+weather_to_text.set(127 , "Orages fréquents de neige ou grésil");
+weather_to_text.set(128 , "Orages fréquents de neige ou grésil");
+weather_to_text.set(130 , "Orages faibles et locaux de pluie et neige mêlées ou grésil");
+weather_to_text.set(131 , "Orages locaux de pluie et neige mêlées ou grésil");
+weather_to_text.set(132 , "Orages fort et locaux de pluie et neige mêlées ou grésil");
+weather_to_text.set(133 , "Orages faibles de pluie et neige mêlées ou grésil");
+weather_to_text.set(134 , "Orages de pluie et neige mêlées ou grésil");
+weather_to_text.set(135 , "Orages forts de pluie et neige mêlées ou grésil");
+weather_to_text.set(136 , "Orages faibles et fréquents de pluie et neige mêlées ou grésil");
+weather_to_text.set(137 , "Orages fréquents de pluie et neige mêlées ou grésil");
+weather_to_text.set(138 , "Orages forts et fréquents de pluie et neige mêlées ou grésil");
+weather_to_text.set(140 , "Pluies orageuses");
+weather_to_text.set(141 , "Pluie et neige mêlées à caractère orageux");
+weather_to_text.set(142 , "Neige à caractère orageux");
+weather_to_text.set(210 , "Pluie faible intermittente");
+weather_to_text.set(211 , "Pluie modérée intermittente");
+weather_to_text.set(212 , "Pluie forte intermittente");
+weather_to_text.set(220 , "Neige faible intermittente");
+weather_to_text.set(221 , "Neige modérée intermittente");
+weather_to_text.set(222 , "Neige forte intermittente");
+weather_to_text.set(230 , "Pluie et neige mêlées");
+weather_to_text.set(231 , "Pluie et neige mêlées");
+weather_to_text.set(232 , "Pluie et neige mêlées");
+weather_to_text.set(235 , "Averses de grêle");
+
+
+
 
 //RETURN an array with the INSEE code and name of each commune with the postal code given
 // Array[
 // 0: Array[insee code, name]
 // 1: ...
 // ]
+//
 async function get_INSEE_code_from_CP(cp) {
   const request = "https://geo.api.gouv.fr/communes?codePostal=" + cp;
   const code_INSEE = [];
@@ -110,6 +113,7 @@ async function get_INSEE_code_from_CP(cp) {
   return code_INSEE;
 }
 
+//                  DELETE WENT UPDATED TO NEW FUNCTION (get_forcast_info)
 async function get_weather_info_from_insee_code(insee_code, day_from_today) {
   const request =
     "https://api.meteo-concept.com/api/forecast/daily/" +
@@ -129,8 +133,39 @@ async function get_weather_info_from_insee_code(insee_code, day_from_today) {
 
   return weather_info;
 }
+//                   SAME AS ABOVE DELETE WENT UPDATEDTO NEW FUNCTION
+async function get_location_info_from_insee_code(insee_code) {
+  request =
+    "https://api.meteo-concept.com/api/location/city?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" +
+    insee_code;
+  location_info = [];
+  try {
+    promise = await fetch(request);
+    result = await promise.json();
+    location_info = result;
+  } catch (e) {}
+  return location_info;
+}
 
+//RETURN a list of forcast info for each day starting from today up to <nb_day> (max 14 day)
+//access days by the array index (sorted chronologically starting from today)
+//Array[
+//0: {
+//     "latitude" : ,         //latitude
+//     "longitude" : ,        //longitude
+//     "weather" : ,          //int to convert using weather_to_text.get(int)
+//     "temp_min" : ,         //minimum temperature from the day
+//     "temp_max" : ,         //maximum temperature from the day
+//     "rain_prob" : ,        //probability of rain
+//     "rain_amont" : ,       //quantity of rain in mm
+//     "sunshine_hour" : ,    //number of hour of sun exposure 
+//     "avg_wind" : ,         //average wind at 10 m in km/h 
+//     "wind_direction": ,    //direction the wind is comming in degree
+//    }
+//1: ...
+//
 async function get_forcast_info(code_insee, nb_day){
+  if(nb_day < 1 || nb_day > 14){throw new Error('Can get forcast for 1 to 14 days');}
   request = "https://api.meteo-concept.com/api/forecast/daily?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" + code_insee
   api_reponce = 0;
 
@@ -146,16 +181,16 @@ async function get_forcast_info(code_insee, nb_day){
   for( i = 0; i < nb_day; i++){
     day_info = 
     {
-      "latitude" : api_reponce.city.latitude, 
-      "longitude" : api_reponce.city.longitude,
-      "weather" : api_forcast_reponce[i].weather,
-      "temp_min" : api_forcast_reponce[i].tmin,
-      "temp_max" : api_forcast_reponce[i].tmax,
-      "rain_prob" : api_forcast_reponce[i].probarain,
-      "rain_amont" : api_forcast_reponce[i].etp,
-      "sunshine_hour" : api_forcast_reponce[i].sun_hour,
-      "avg_wind" : api_forcast_reponce[i].wind10m,
-      "wind_direction": api_forcast_reponce[i].dirwind10m
+      "latitude" : api_reponce.city.latitude,                  //latitude
+      "longitude" : api_reponce.city.longitude,                //longitude
+      "weather" : api_forcast_reponce[i].weather,              //int to convert using the weather_to_text constant
+      "temp_min" : api_forcast_reponce[i].tmin,                //minimum temperature from 
+      "temp_max" : api_forcast_reponce[i].tmax,                //
+      "rain_prob" : api_forcast_reponce[i].probarain,          //
+      "rain_amont" : api_forcast_reponce[i].etp,               //
+      "sunshine_hour" : api_forcast_reponce[i].sun_hour,       //
+      "avg_wind" : api_forcast_reponce[i].wind10m,             //
+      "wind_direction": api_forcast_reponce[i].dirwind10m      //
     };
     
     
@@ -163,26 +198,6 @@ async function get_forcast_info(code_insee, nb_day){
   }
   return forcast_info;
 }
-
-async function get_location_info_from_insee_code(insee_code) {
-  request =
-    "https://api.meteo-concept.com/api/location/city?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" +
-    insee_code;
-  location_info = [];
-  try {
-    promise = await fetch(request);
-    result = await promise.json();
-    location_info = result;
-  } catch (e) {}
-  return location_info;
-}
-
-//for function test
-window.onload = async function () {
-  insee_code = await get_INSEE_code_from_CP(14123);
-  forcast_info = await get_forcast_info(insee_code, 3);
-  console.log(forcast_info);
-};
 
 //fonction pour afficher les résultats dans le menu déroulant
 function displayResultsCities(codesInsee) {
@@ -299,3 +314,8 @@ document.getElementById("check").addEventListener("click", async function () {
     console.error("Aucune ville sélectionnée.");
   }
 });
+
+
+
+
+
