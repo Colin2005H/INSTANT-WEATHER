@@ -349,28 +349,38 @@ function display_card(forcast_info){
     //day
     day_name = document.createElement("p");
     day_name.classList.add("card_day");
+    const date = new Date();
+    date.setDate(date.getDate() + day); //increment the date by the current day index
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    day_name.textContent = date.toLocaleDateString('fr-FR', options); 
+    
 
     //icon
     icon = document.createElement("img");
     icon.classList.add("card_icon");
 
+    temp = document.createElement("div");
+    temp.classList.add("temp");
+    
     //min
     min = document.createElement("p");
     min.classList.add("card_min");
-    min.textContent = forcast_info[day].temp_min;
+    min.textContent = forcast_info[day].temp_min + "°C";
 
     //max
     max = document.createElement("p");
     max.classList.add("card_max");
-    max.textContent = forcast_info[day].temp_max;
+    max.textContent = forcast_info[day].temp_max + "°C";
 
 
     card.appendChild(day_name);
     card.appendChild(icon);
-    card.appendChild(max);
-    card.appendChild(min);
-
-    forecast_cards.appendChild(card);
+    card.appendChild(temp);
+    temp.appendChild(min);
+    
+    temp.appendChild(max);
+    forecast_cards.appendChild(card).style.animation = "slideInCard 0.5s forwards";
+    
 
   }
 }

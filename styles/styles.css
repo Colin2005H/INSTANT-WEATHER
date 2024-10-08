@@ -7,9 +7,8 @@
 body {
   background: linear-gradient(to top, var(--bleu), white);
   background-attachment: fixed;
-  font-family: "Shadows Into Light", cursive;
-
-  font-weight: 700;
+  font-family: "Poiret One", sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -57,6 +56,8 @@ nav {
 #results {
   color: var(--bleu);
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #inputCodePostal {
@@ -69,10 +70,12 @@ nav {
   padding: 1vw;
   text-align: left;
   font-size: 2vw;
-  font-family: "Shadows Into Light", cursive;
   -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
   box-shadow: 0px 0px 10px -2px #ffffff;
   margin-right: 1vw;
+  font-family: "Poiret One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #search {
@@ -82,6 +85,8 @@ nav {
   justify-content: center;
   margin-top: 6vw;
   animation: morph-in 0.5s ease-in-out;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #search-button {
@@ -102,13 +107,17 @@ nav {
   cursor: pointer;
 }
 
+#reset-button:hover {
+  background-color: var(--bleu);
+  color: white;
+}
+
 #search-button:hover {
   background-color: var(--bleu);
   color: white;
 }
 
 .buttonCodePostal {
-  font-family: "Shadows Into Light", cursive;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -119,6 +128,10 @@ nav {
 #forecast {
   margin-top: 4vw;
   width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .weather-table {
@@ -152,7 +165,6 @@ nav {
 }
 
 #resultSelect {
-  font-family: "Shadows Into Light", cursive;
   padding: 1vw;
   font-size: 2vw;
   border: none;
@@ -163,6 +175,9 @@ nav {
   min-width: 20%;
   max-width: 50%;
   min-height: 3vw;
+  font-family: "Poiret One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #card-results {
@@ -219,6 +234,16 @@ nav {
   }
 }
 
+@keyframes slideInCard {
+  0% {
+    transform: translatex(-10vw);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   #head-bar {
@@ -260,7 +285,8 @@ nav {
   #inputCodePostal,
   #search-button,
   #resultSelect,
-  #check {
+  #check,
+  #reset-button {
     font-size: 3vw;
   }
 
@@ -283,7 +309,8 @@ nav {
   #inputCodePostal,
   #search-button,
   #resultSelect,
-  #check {
+  #check,
+  #reset-button {
     font-size: 5vw;
   }
 
@@ -298,19 +325,24 @@ nav {
   }
 }
 
-.forcast_cards{
-  background-color: #ffffff;
-  padding: 2vw;
+#forecast_cards {
+  margin-top: 4vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  
+  width: 100%;
+  flex-direction: row;
+  gap: 3vw;
+  overflow-x: auto;
+  padding: 2vw;
+  white-space: nowrap;
 }
 
-.card{
-  border-style: double;
-  width: 10%;
-  gap: 2vw;
-  padding: 2vw;
+.card {
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  min-width: 150px;
+  min-height: 100px;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
+  box-shadow: 0px 0px 10px -2px #ffffff;
+  flex: 1 1 auto;
 }
