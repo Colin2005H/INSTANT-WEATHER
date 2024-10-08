@@ -19,6 +19,15 @@ async function get_INSEE_code_from_CP(cp) {
   return code_INSEE;
 }
 
+function regex(input) {
+    if(input < 99999){
+      return true;
+    }
+    return false;
+  }
+
+
+
 async function get_weather_info_from_insee_code(insee_code, day_from_today) {
   const request =
     "https://api.meteo-concept.com/api/forecast/daily/" +
@@ -88,9 +97,9 @@ function displayResultsCities(codesInsee) {
 document
   .getElementById("search-button")
   .addEventListener("click", async function () {
-    const inputCodePostal = document.getElementById("inputCodePostal").value;
-
-    if (inputCodePostal) {
+    inputCodePostal = document.getElementById("inputCodePostal").value;
+    if (regex(inputCodePostal)) {
+      console.log("Code postal valide.");
       const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
       displayResultsCities(codesInsee);
       cardResults = document.getElementById("card-results");
@@ -98,6 +107,40 @@ document
       cardResults.style.animation = "slideIn 0.5s forwards";
     } else {
       console.error("Veuillez entrer un code postal valide.");
+    }
+  });
+
+  document.getElementById("inputCodePostal").addEventListener("keypress", async function (event) {
+    if (event.key === "Enter") {
+      inputCodePostal = document.getElementById("inputCodePostal").value;
+      if (regex(inputCodePostal)) {
+        console.log("Code postal valide.");
+        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
+        displayResultsCities(codesInsee);
+        cardResults = document.getElementById("card-results");
+        cardResults.style.display = "flex";
+        cardResults.style.animation = "slideIn 0.5s forwards";
+      } else {
+        console.error("Veuillez entrer un code postal valide.");
+      }
+    }
+  });
+
+document
+  .getElementById("inputCodePostal")
+  .addEventListener("keypress", async function (event) {
+    if (event.key === "Enter") {
+      inputCodePostal = document.getElementById("inputCodePostal").value;
+      if (regex(inputCodePostal)) {
+        console.log("Code postal valide.");
+        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
+        displayResultsCities(codesInsee);
+        cardResults = document.getElementById("card-results");
+        cardResults.style.display = "flex";
+        cardResults.style.animation = "slideIn 0.5s forwards";
+      } else {
+        console.error("Veuillez entrer un code postal valide.");
+      }
     }
   });
 
