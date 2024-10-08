@@ -160,26 +160,33 @@ function displayWeatherForecast(weatherData) {
   forecastDiv.appendChild(table).style.animation = "slideIn 0.5s forwards";
 }
 
-document.getElementById("check").addEventListener("click", async function () {
-  const selectedOption =
-    document.getElementById("resultSelect").selectedOptions[0];
-  if (selectedOption) {
-    const inseeCode = selectedOption.value;
+document
+  .getElementById("check")
+  .addEventListener("click", async function checkBouton() {
+    const selectedOption =
+      document.getElementById("resultSelect").selectedOptions[0];
+    if (selectedOption) {
+      const inseeCode = selectedOption.value;
+      document.getElementById("search-button").style.display = "none";
+      document.getElementById("reset-button").style.display = "flex";
+      const weatherInfo = await get_weather_info_from_insee_code(inseeCode, 0);
 
-    const weatherInfo = await get_weather_info_from_insee_code(inseeCode, 0);
-
-    if (weatherInfo && weatherInfo.forecast) {
-      displayWeatherForecast(weatherInfo.forecast);
+      if (weatherInfo && weatherInfo.forecast) {
+        displayWeatherForecast(weatherInfo.forecast);
+      } else {
+        console.error("Impossible de récupérer les informations météo");
+      }
     } else {
-      console.error("Impossible de récupérer les informations météo");
+      console.error("Aucune ville sélectionnée.");
     }
-  } else {
-    console.error("Aucune ville sélectionnée.");
-  }
-});
+  });
 
 document
-  .getElementById("resetButton")
+  .getElementById("reset-button")
   .addEventListener("click", async function () {
-    document.getElementById("formCodePostal").reset();
+    document.getElementById("card-results").style.display = "none";
+    document.getElementById("inputCodePostal").value = "";
+    document.getElementById("search-button").style.display = "flex";
+    document.getElementById("reset-button").style.display = "none";
+    document.getElementById("forecast").innerHTML = "";
   });
