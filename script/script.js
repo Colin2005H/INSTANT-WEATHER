@@ -39,27 +39,15 @@ weather_to_text.set(65, "Averses de neige fortes");
 weather_to_text.set(66, "Averses de neige faibles et fréquentes");
 weather_to_text.set(67, "Averses de neige fréquentes");
 weather_to_text.set(68, "Averses de neige fortes et fréquentes");
-weather_to_text.set(
-  70,
-  "Averses de pluie et neige mêlées localisées et faibles"
-);
+weather_to_text.set(70, "Averses de pluie et neige mêlées localisées et faibles");
 weather_to_text.set(71, "Averses de pluie et neige mêlées localisées");
-weather_to_text.set(
-  72,
-  "Averses de pluie et neige mêlées localisées et fortes"
-);
+weather_to_text.set(72, "Averses de pluie et neige mêlées localisées et fortes");
 weather_to_text.set(73, "Averses de pluie et neige mêlées faibles");
 weather_to_text.set(74, "Averses de pluie et neige mêlées");
 weather_to_text.set(75, "Averses de pluie et neige mêlées fortes");
-weather_to_text.set(
-  76,
-  "Averses de pluie et neige mêlées faibles et nombreuses"
-);
+weather_to_text.set(76,"Averses de pluie et neige mêlées faibles et nombreuses");
 weather_to_text.set(77, "Averses de pluie et neige mêlées fréquentes");
-weather_to_text.set(
-  78,
-  "Averses de pluie et neige mêlées fortes et fréquentes"
-);
+weather_to_text.set(78,"Averses de pluie et neige mêlées fortes et fréquentes");
 weather_to_text.set(100, "Orages faibles et locaux");
 weather_to_text.set(101, "Orages locaux");
 weather_to_text.set(102, "Orages fort et locaux");
@@ -78,27 +66,15 @@ weather_to_text.set(125, "Orages de neige ou grésil");
 weather_to_text.set(126, "Orages faibles et fréquents de neige ou grésil");
 weather_to_text.set(127, "Orages fréquents de neige ou grésil");
 weather_to_text.set(128, "Orages fréquents de neige ou grésil");
-weather_to_text.set(
-  130,
-  "Orages faibles et locaux de pluie et neige mêlées ou grésil"
-);
+weather_to_text.set(130,"Orages faibles et locaux de pluie et neige mêlées ou grésil");
 weather_to_text.set(131, "Orages locaux de pluie et neige mêlées ou grésil");
-weather_to_text.set(
-  132,
-  "Orages fort et locaux de pluie et neige mêlées ou grésil"
-);
+weather_to_text.set(132,"Orages fort et locaux de pluie et neige mêlées ou grésil");
 weather_to_text.set(133, "Orages faibles de pluie et neige mêlées ou grésil");
 weather_to_text.set(134, "Orages de pluie et neige mêlées ou grésil");
 weather_to_text.set(135, "Orages forts de pluie et neige mêlées ou grésil");
-weather_to_text.set(
-  136,
-  "Orages faibles et fréquents de pluie et neige mêlées ou grésil"
-);
+weather_to_text.set(136,"Orages faibles et fréquents de pluie et neige mêlées ou grésil");
 weather_to_text.set(137, "Orages fréquents de pluie et neige mêlées ou grésil");
-weather_to_text.set(
-  138,
-  "Orages forts et fréquents de pluie et neige mêlées ou grésil"
-);
+weather_to_text.set(138,"Orages forts et fréquents de pluie et neige mêlées ou grésil");
 weather_to_text.set(140, "Pluies orageuses");
 weather_to_text.set(141, "Pluie et neige mêlées à caractère orageux");
 weather_to_text.set(142, "Neige à caractère orageux");
@@ -229,6 +205,8 @@ function regex(input) {
   return false;
 }
 
+
+
 //fonction pour afficher les résultats dans le menu déroulant
 function displayResultsCities(codesInsee) {
   const resultSelect = document.getElementById("resultSelect");
@@ -257,7 +235,6 @@ document
   .addEventListener("click", async function () {
     inputCodePostal = document.getElementById("inputCodePostal").value;
     if (regex(inputCodePostal)) {
-      console.log("Code postal valide.");
       const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
       displayResultsCities(codesInsee);
       cardResults = document.getElementById("card-results");
@@ -268,13 +245,13 @@ document
     }
   });
 
+
 document
   .getElementById("inputCodePostal")
   .addEventListener("keypress", async function (event) {
     if (event.key === "Enter") {
       inputCodePostal = document.getElementById("inputCodePostal").value;
       if (regex(inputCodePostal)) {
-        console.log("Code postal valide.");
         const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
         displayResultsCities(codesInsee);
         cardResults = document.getElementById("card-results");
@@ -292,7 +269,6 @@ document
     if (event.key === "Enter") {
       inputCodePostal = document.getElementById("inputCodePostal").value;
       if (regex(inputCodePostal)) {
-        console.log("Code postal valide.");
         const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
         displayResultsCities(codesInsee);
         cardResults = document.getElementById("card-results");
@@ -363,6 +339,61 @@ function displayWeatherForecast(weatherData) {
   forecastDiv.appendChild(table).style.animation = "slideIn 0.5s forwards";
 }
 
+function display_card(forcast_info){
+  const forecast_cards = document.getElementById("forecast_cards");
+
+  for(day = 0; day < forcast_info.length; day++){
+    card = document.createElement("div");
+    card.classList.add("card");
+
+    //day
+    day_name = document.createElement("p");
+    day_name.classList.add("card_day");
+
+    //icon
+    icon = document.createElement("img");
+    icon.classList.add("card_icon");
+
+    //min
+    min = document.createElement("p");
+    min.classList.add("card_min");
+    min.textContent = forcast_info[day].temp_min;
+
+    //max
+    max = document.createElement("p");
+    max.classList.add("card_max");
+    max.textContent = forcast_info[day].temp_max;
+
+
+    card.appendChild(day_name);
+    card.appendChild(icon);
+    card.appendChild(max);
+    card.appendChild(min);
+
+    forecast_cards.appendChild(card);
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document
   .getElementById("check")
   .addEventListener("click", async function checkBouton() {
@@ -376,6 +407,9 @@ document
 
       if (weatherInfo && weatherInfo.forecast) {
         displayWeatherForecast(weatherInfo.forecast);
+        forcast_info = await get_forcast_info(selectedOption, 7);
+        console.log(forcast_info);
+        display_card(forcast_info);
       } else {
         console.error("Impossible de récupérer les informations météo");
       }
@@ -384,9 +418,7 @@ document
     }
   });
 
-  document
-  .getElementById("reset-button")
-  .addEventListener("click", async function () {
+  document.getElementById("reset-button").addEventListener("click", async function () {
     document.getElementById("card-results").style.display = "none";
     document.getElementById("inputCodePostal").value = "";
     document.getElementById("search-button").style.display = "flex";

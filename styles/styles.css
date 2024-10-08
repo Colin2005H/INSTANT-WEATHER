@@ -297,3 +297,20 @@ nav {
     font-size: 3vw;
   }
 }
+
+.forcast_cards{
+  background-color: #ffffff;
+  padding: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+}
+
+.card{
+  border-style: double;
+  width: 10%;
+  gap: 2vw;
+  padding: 2vw;
+}
