@@ -86,7 +86,7 @@ function displayResultsCities(codesInsee) {
 }
 
 document
-  .getElementById("buttonCodePostal")
+  .getElementById("search-button")
   .addEventListener("click", async function () {
     const inputCodePostal = document.getElementById("inputCodePostal").value;
 
@@ -96,6 +96,8 @@ document
     } else {
       console.error("Veuillez entrer un code postal valide.");
     }
+    blockMain = document.getElementById("blockMain");
+    blockMain.style.display = "flex";
   });
 
 // Fonction pour afficher les résultats météo dans un tableau
@@ -176,3 +178,5 @@ document
       console.error("Aucune ville sélectionnée.");
     }
   });
+
+ 

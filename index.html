@@ -10,29 +10,41 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@125,300..700&display=swap"
       rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+      rel="stylesheet" />
     <script defer src="script/script.js"></script>
+    <script src="https://kit.fontawesome.com/04e34c72ac.js"></script>
     <title>Instant Weather</title>
   </head>
   <body>
-    <header>
+    <nav>
       <div id="head-bar">
         <img src="image/icon.png" alt="logo" id="logo" />
         <h1 id="title">Instant Weather</h1>
+        <i class="fa-solid fa-circle-half-stroke" id="dark-mode"></i>
       </div>
-    </header>
-    <div id="main">
-      <div class="block-main">
-        <label id="labelCodePostal">Code Postal :</label>
-        <input id="inputCodePostal" placeholder="14123" />
-        <button id="buttonCodePostal">Valider</button>
-      </div>
-      <div class="block-main">
-        <label id="results">Résultats :</label>
-        <select id="resultSelect"></select>
-        <button id="ButtonCityChoice">Valider</button>
-        <!-- dropdown menu -->
-      </div>
+    </nav>
+    <div id="search">
+      <label id="labelCodePostal" style="display: none">Code Postal :</label>
+      <input
+        id="inputCodePostal"
+        placeholder="Code postal"
+        maxlength="5"
+        pattern="\d{5}"
+        title="Veuillez entrer un code postal de 5 chiffres" />
+      <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
     </div>
+    <div class="block-main" style="display: none;" id ="blockMain">
+      <label id="results">Résultats :</label>
+      <select id="resultSelect"></select>
+      <button id="ButtonCityChoice">Valider</button>
+      <!-- dropdown menu -->
+    </div>
+
     <div id="forecast"></div>
 
     <footer></footer>

@@ -7,20 +7,23 @@
 body {
   background: linear-gradient(to top, var(--bleu), white);
   background-attachment: fixed;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Shadows Into Light", cursive;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  animation: slideIn 1s ease-in-out;
+  
 }
 
-header {
+nav {
   height: 5vw;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   margin: 2vw;
+  opacity: 0;
+  animation: slideIn 1s ease-in-out forwards;
+
 }
 
 #logo {
@@ -34,12 +37,18 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
+  font-size: 3vw;
 }
 
 .title {
-  font-size: 6em;
   color: var(--bleu);
   margin-left: 2vw;
+}
+
+#dark-mode {
+  position: absolute;
+  right: 0;
+  font-size: 2vw;
 }
 
 #main {
@@ -53,40 +62,65 @@ header {
   box-shadow: 0px 0px 10px -2px #ffffff;
 }
 
-#labelCodePostal {
-  color: white;
-  display: flex;
-}
 #results {
   color: white;
   display: flex;
 }
 
 #inputCodePostal {
-  border-radius: 0.5vw;
+  border-radius: 2vw;
+  min-width: 20%;
+  max-width: 50%;
+  color: var(--bleu);
+  min-height: 3vw;
   border: none;
-  padding: 0.4vw;
+  padding: 0.5vw;
+  text-align: left;
+  font-size: 2vw;
+  font-family: "Shadows Into Light", cursive;
+  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
+  box-shadow: 0px 0px 10px -2px #ffffff;
+  margin-right: 1vw; 
+  
+}
+
+#search {
   display: flex;
-  text-align: center;
-  justify-content: left;
-  text-align: center;
-  border-style: solid;
-  border-width: 0.1em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  margin-top: 6vw;
+  animation: morph 0.5s ease-in-out;
+  
+}
+
+#search-button {
+  padding: 0.5vw 1vw; 
+  font-size: 2vw;
+  color: var(--bleu);
+  border: none;
+  border-radius: 2vw;
+  cursor: pointer;
+  
+}
+
+#search-button:hover {
+  background-color: var(--bleu);
+  color: white;
 }
 
 .buttonCodePostal {
-  font-family: "Fredoka", sans-serif;
-  background-color: var(--bleu);
+  font-family: "Shadows Into Light", cursive; 
+  background-color: white; 
   display: flex;
   flex-direction: column;
-  margin-top: 2vw;
   margin-left: auto;
   margin-right: auto;
-  width: 10%;
 }
 
 .block-main {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 2vw;
   display: flex;
   flex-direction: column;
   margin: 2vw;
@@ -98,19 +132,20 @@ header {
   color: white;
   -webkit-box-shadow: 0px 0px 10px -2px var(--bleu);
   box-shadow: 0px 0px 10px -2px var(--bleu);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .weather-table {
   width: 50%;
   border-collapse: collapse;
   margin: 1vw;
-  font-size: 1em;
+  font-size: 1vw;
   min-width: 400px;
   overflow-x: auto;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  animation: slideIn 1s ease-in-out;
 }
 
 .weather-header {
@@ -119,6 +154,7 @@ header {
   text-align: center;
   padding: 0.5vw;
   border: 1px solid white;
+  font-size: 2vw;
 }
 
 .weather-data {
@@ -127,12 +163,24 @@ header {
   text-align: center;
   background-color: white;
   color: var(--bleu);
+  font-size: 2vw;
+}
+
+@keyframes morph {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    
+  }
 }
 
 @keyframes slideIn {
   0% {
-    transform: translateY(-100%);
-    opacity: 0;
+    transform: translateY(-150px);
   }
   100% {
     transform: translateY(0);
@@ -140,13 +188,73 @@ header {
   }
 }
 
-@media (max-width: 768px) {
-  .weather-table {
-    font-size: 0.8em;
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  #head-bar {
+    font-size: 2.5vw;
   }
 
-  .weather-header,
-  .weather-data {
-    padding: 1vw;
+  #inputCodePostal, #search-button {
+    font-size: 1.5vw;
+  }
+
+  .block-main {
+    width: 40%;
+    font-size: 1.5vw;
+  }
+
+  .weather-table {
+    width: 70%;
+    font-size: 1.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #logo {
+    width: 10vw;
+    margin-bottom: 1vw;
+  }
+
+  #head-bar {
+    font-size: 4vw;
+  }
+
+  #inputCodePostal, #search-button {
+    font-size: 3vw;
+  }
+
+  .block-main {
+    width: 80%;
+    font-size: 2.5vw;
+  }
+
+  .weather-table {
+    width: 90%;
+    font-size: 2.5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  #head-bar {
+    font-size: 5vw;
+  }
+
+  #inputCodePostal, #search-button {
+    font-size: 4vw;
+  }
+
+  .block-main {
+    width: 100%;
+    font-size: 3vw;
+  }
+
+  .weather-table {
+    width: 100%;
+    font-size: 3vw;
   }
 }
