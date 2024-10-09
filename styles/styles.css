@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(to top, var(--bleu), white);
+  background: linear-gradient(to top, var(--bleu) 0%, rgb(0, 0, 0) 99%);
   background-attachment: fixed;
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
@@ -14,6 +14,7 @@ body {
 
 nav {
   height: 5vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +31,7 @@ nav {
 
 #head-bar {
   display: flex;
-  color: var(--bleu);
+  color: white;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -48,7 +49,7 @@ nav {
   width: auto;
   background-color: white;
   margin: 3vw;
-  border-radius: 3vw;
+  border-radius: 1.5vw;
   -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
   box-shadow: 0px 0px 10px -2px #ffffff;
 }
@@ -76,7 +77,15 @@ nav {
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.7);
 }
+
+#inputCodePostal:hover {
+  transform: scale(1.05);
+  background-color: white;
+}
+
 
 #search {
   display: flex;
@@ -89,32 +98,24 @@ nav {
   margin-right: auto;
 }
 
+#reset-button,
+#check,
 #search-button {
   padding: 0.5vw 1vw;
   font-size: 2vw;
-  color: var(--bleu);
+  color: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 2vw;
   cursor: pointer;
+  transition: 0.5s;
 }
 
-#reset-button {
-  padding: 0.5vw 1vw;
-  font-size: 2vw;
-  color: var(--bleu);
-  border: none;
-  border-radius: 2vw;
-  cursor: pointer;
-}
-
+#search-button:hover,
+#check:hover,
 #reset-button:hover {
-  background-color: var(--bleu);
-  color: white;
-}
-
-#search-button:hover {
-  background-color: var(--bleu);
-  color: white;
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
 }
 
 .buttonCodePostal {
@@ -126,58 +127,72 @@ nav {
 }
 
 #forecast {
-  margin-top: 4vw;
-  width: 90%;
+  width: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
+  box-shadow: 0px 0px 10px -2px #ffffff;
+  border-radius: 2vw;
+  color: black;
+  transition: 0.5s;
+  margin-top: 5vw;
 }
 
-.weather-table {
-  width: 50%;
-  border-collapse: collapse;
-  margin: 0.5vw;
-  font-size: 1vw;
-  min-width: 400px;
-  overflow-x: auto;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.weather-header {
-  background-color: var(--bleu_clair);
-  color: white;
-  text-align: center;
-  padding: 0.5vw;
-  border: 1px solid white;
-  font-size: 2vw;
-}
-
-.weather-data {
-  border: 1px solid var(--bleu_clair);
-  padding: 0.5vw;
-  text-align: center;
+#forecast:hover {
+  transform: scale(1.05);
   background-color: white;
-  color: var(--bleu);
-  font-size: 2vw;
+}
+
+.city-name {
+  font-size: 4vw;
+  text-align: center;
+}
+
+.weather {
+  font-size: 3vw;
+  text-align: center;
+}
+
+.temperature {
+  font-size: 5vw;
+  text-align: center;
+}
+
+.rain-prob {
+  font-size: 3vw;
+  text-align: center;
+}
+
+.sun-hours {
+  font-size: 3vw;
+  text-align: center;
 }
 
 #resultSelect {
   padding: 1vw;
-  font-size: 2vw;
+  font-size: 1.5vw;
   border: none;
   margin: 1vw;
   -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
   box-shadow: 0px 0px 10px -2px #ffffff;
-  border-radius: 2vw;
+  border-radius: 1.5vw;
   min-width: 20%;
   max-width: 50%;
   min-height: 3vw;
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+#resultSelect:hover {
+  transform: scale(1.05);
+  background-color: white;
 }
 
 #card-results {
@@ -186,20 +201,6 @@ nav {
   align-items: center;
   justify-content: center;
   margin-top: 4vw;
-}
-
-#check {
-  padding: 0.5vw 1vw;
-  font-size: 2vw;
-  color: var(--bleu);
-  border: none;
-  border-radius: 2vw;
-  cursor: pointer;
-}
-
-#check:hover {
-  background-color: var(--bleu);
-  color: white;
 }
 
 @keyframes morph-in {
@@ -227,16 +228,6 @@ nav {
 @keyframes slideIn {
   0% {
     transform: translateY(-6vw);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInCard {
-  0% {
-    transform: translatex(-10vw);
   }
   100% {
     transform: translateY(0);
@@ -323,26 +314,47 @@ nav {
     width: 100%;
     font-size: 3vw;
   }
+
+  #forecast_cards {
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  .card {
+    min-width: 100%;
+  }
 }
 
 #forecast_cards {
   margin-top: 4vw;
   display: flex;
-  width: 100%;
+  max-width: 100%;
   flex-direction: row;
   gap: 3vw;
   overflow-x: auto;
   padding: 2vw;
   white-space: nowrap;
+  transition: 1s;
 }
 
 .card {
-  background-color: #f1f1f1;
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1.5vw;
   min-width: 150px;
   min-height: 100px;
   text-align: center;
   -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
   box-shadow: 0px 0px 10px -2px #ffffff;
   flex: 1 1 auto;
+  transition: 0.5s;
 }
+
+.card:hover {
+  transform:translate3d(0, -10px, 0);
+  background-color: white;
+}
+
+
+
+
+

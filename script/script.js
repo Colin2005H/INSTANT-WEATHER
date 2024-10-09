@@ -39,15 +39,27 @@ weather_to_text.set(65, "Averses de neige fortes");
 weather_to_text.set(66, "Averses de neige faibles et fréquentes");
 weather_to_text.set(67, "Averses de neige fréquentes");
 weather_to_text.set(68, "Averses de neige fortes et fréquentes");
-weather_to_text.set(70, "Averses de pluie et neige mêlées localisées et faibles");
+weather_to_text.set(
+  70,
+  "Averses de pluie et neige mêlées localisées et faibles"
+);
 weather_to_text.set(71, "Averses de pluie et neige mêlées localisées");
-weather_to_text.set(72, "Averses de pluie et neige mêlées localisées et fortes");
+weather_to_text.set(
+  72,
+  "Averses de pluie et neige mêlées localisées et fortes"
+);
 weather_to_text.set(73, "Averses de pluie et neige mêlées faibles");
 weather_to_text.set(74, "Averses de pluie et neige mêlées");
 weather_to_text.set(75, "Averses de pluie et neige mêlées fortes");
-weather_to_text.set(76,"Averses de pluie et neige mêlées faibles et nombreuses");
+weather_to_text.set(
+  76,
+  "Averses de pluie et neige mêlées faibles et nombreuses"
+);
 weather_to_text.set(77, "Averses de pluie et neige mêlées fréquentes");
-weather_to_text.set(78,"Averses de pluie et neige mêlées fortes et fréquentes");
+weather_to_text.set(
+  78,
+  "Averses de pluie et neige mêlées fortes et fréquentes"
+);
 weather_to_text.set(100, "Orages faibles et locaux");
 weather_to_text.set(101, "Orages locaux");
 weather_to_text.set(102, "Orages fort et locaux");
@@ -66,15 +78,27 @@ weather_to_text.set(125, "Orages de neige ou grésil");
 weather_to_text.set(126, "Orages faibles et fréquents de neige ou grésil");
 weather_to_text.set(127, "Orages fréquents de neige ou grésil");
 weather_to_text.set(128, "Orages fréquents de neige ou grésil");
-weather_to_text.set(130,"Orages faibles et locaux de pluie et neige mêlées ou grésil");
+weather_to_text.set(
+  130,
+  "Orages faibles et locaux de pluie et neige mêlées ou grésil"
+);
 weather_to_text.set(131, "Orages locaux de pluie et neige mêlées ou grésil");
-weather_to_text.set(132,"Orages fort et locaux de pluie et neige mêlées ou grésil");
+weather_to_text.set(
+  132,
+  "Orages fort et locaux de pluie et neige mêlées ou grésil"
+);
 weather_to_text.set(133, "Orages faibles de pluie et neige mêlées ou grésil");
 weather_to_text.set(134, "Orages de pluie et neige mêlées ou grésil");
 weather_to_text.set(135, "Orages forts de pluie et neige mêlées ou grésil");
-weather_to_text.set(136,"Orages faibles et fréquents de pluie et neige mêlées ou grésil");
+weather_to_text.set(
+  136,
+  "Orages faibles et fréquents de pluie et neige mêlées ou grésil"
+);
 weather_to_text.set(137, "Orages fréquents de pluie et neige mêlées ou grésil");
-weather_to_text.set(138,"Orages forts et fréquents de pluie et neige mêlées ou grésil");
+weather_to_text.set(
+  138,
+  "Orages forts et fréquents de pluie et neige mêlées ou grésil"
+);
 weather_to_text.set(140, "Pluies orageuses");
 weather_to_text.set(141, "Pluie et neige mêlées à caractère orageux");
 weather_to_text.set(142, "Neige à caractère orageux");
@@ -205,8 +229,6 @@ function regex(input) {
   return false;
 }
 
-
-
 //fonction pour afficher les résultats dans le menu déroulant
 function displayResultsCities(codesInsee) {
   const resultSelect = document.getElementById("resultSelect");
@@ -245,7 +267,6 @@ document
     }
   });
 
-
 document
   .getElementById("inputCodePostal")
   .addEventListener("keypress", async function (event) {
@@ -280,6 +301,47 @@ document
     }
   });
 
+// Fonction pour afficher les résultats météo dans un tableau
+function displayWeatherForecast(weatherData) {
+  const forecastDiv = document.getElementById("forecast");
+
+  // Vider le contenu précédent du div
+  forecastDiv.innerHTML = "";
+
+  const weatherForTheDay = document.createElement("div");
+  weatherForTheDay.classList.add("weather-for-the-day");
+
+  const cityName = document.createElement("p");
+  cityName.classList.add("city-name");
+  const selectedOption =
+  document.getElementById("resultSelect").selectedOptions[0];
+  cityName.textContent = selectedOption.textContent.split(" : ")[0];
+
+
+  const temperature = document.createElement("p");
+  temperature.classList.add("temperature");
+  temperature.textContent = `${weatherData.tmin}°C - ${weatherData.tmax}°C`;
+
+  const weather = document.createElement("p");
+  weather.classList.add("weather");
+  weather.textContent = weather_to_text.get(weatherData.weather);
+
+  const rainProb = document.createElement("p");
+  rainProb.classList.add("rain-prob");
+  rainProb.textContent = `${weatherData.probarain}%`;
+
+  const sunHours = document.createElement("p");
+  sunHours.classList.add("sun-hours");
+  sunHours.textContent = `${weatherData.sun_hours}h`;
+  
+  forecastDiv.appendChild(cityName);
+  forecastDiv.appendChild(weather);
+  forecastDiv.appendChild(temperature);
+  forecastDiv.appendChild(rainProb);
+  forecastDiv.appendChild(sunHours);
+}
+
+/*
 // Fonction pour afficher les résultats météo dans un tableau
 function displayWeatherForecast(weatherData) {
   const forecastDiv = document.getElementById("forecast");
@@ -337,12 +399,12 @@ function displayWeatherForecast(weatherData) {
   table.appendChild(row);
 
   forecastDiv.appendChild(table).style.animation = "slideIn 0.5s forwards";
-}
+}*/
 
-function display_card(forcast_info){
+function display_card(forcast_info) {
   const forecast_cards = document.getElementById("forecast_cards");
 
-  for(day = 0; day < forcast_info.length; day++){
+  for (day = 0; day < forcast_info.length; day++) {
     card = document.createElement("div");
     card.classList.add("card");
 
@@ -351,9 +413,8 @@ function display_card(forcast_info){
     day_name.classList.add("card_day");
     const date = new Date();
     date.setDate(date.getDate() + day); //increment the date by the current day index
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    day_name.textContent = date.toLocaleDateString('fr-FR', options); 
-    
+    const options = { weekday: "long", month: "long", day: "numeric" };
+    day_name.textContent = date.toLocaleDateString("fr-FR", options);
 
     //icon
     icon = document.createElement("img");
@@ -361,7 +422,7 @@ function display_card(forcast_info){
 
     temp = document.createElement("div");
     temp.classList.add("temp");
-    
+
     //min
     min = document.createElement("p");
     min.classList.add("card_min");
@@ -372,37 +433,15 @@ function display_card(forcast_info){
     max.classList.add("card_max");
     max.textContent = forcast_info[day].temp_max + "°C";
 
-
     card.appendChild(day_name);
     card.appendChild(icon);
     card.appendChild(temp);
     temp.appendChild(min);
-    
-    temp.appendChild(max);
-    forecast_cards.appendChild(card).style.animation = "slideInCard 0.5s forwards";
-    
 
+    temp.appendChild(max);
+    forecast_cards.appendChild(card);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document
   .getElementById("check")
@@ -428,10 +467,13 @@ document
     }
   });
 
-  document.getElementById("reset-button").addEventListener("click", async function () {
+document
+  .getElementById("reset-button")
+  .addEventListener("click", async function () {
     document.getElementById("card-results").style.display = "none";
     document.getElementById("inputCodePostal").value = "";
     document.getElementById("search-button").style.display = "flex";
     document.getElementById("reset-button").style.display = "none";
     document.getElementById("forecast").innerHTML = "";
+    document.getElementById("forecast_cards").style.display = "none";
   });
