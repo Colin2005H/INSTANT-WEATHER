@@ -351,11 +351,13 @@ function displayWeatherForecast(weatherData) {
     weather_to_text.get(weatherData.weather).includes("voilé") ||
     weather_to_text.get(weatherData.weather).includes("nuageux")
   ) {
-    imageWeather.src = "image/weather-icon/cloudy-3-day.svg";
+    imageWeather.src = "image/weather-icon/cloudy.svg";
   } else {
     imageWeather.style.display = "none";
   }
 
+  const secondLineWeather = document.createElement("div");
+  secondLineWeather.classList.add("second-line-weather");
   const weather = document.createElement("p");
   weather.classList.add("weather");
   weather.textContent = weather_to_text.get(weatherData.weather);
@@ -369,9 +371,15 @@ function displayWeatherForecast(weatherData) {
   rainProbText.classList.add("rain-prob-text");
   rainProbText.textContent = `${weatherData.probarain}%`;
 
+  const sunDiv = document.createElement("div");
+  sunDiv.classList.add("sun-div");
+  const iconSun = document.createElement("i");
+  iconSun.classList.add("fa-regular", "fa-sun");
+  sunDiv.appendChild(iconSun);
   const sunHours = document.createElement("p");
   sunHours.classList.add("sun-hours");
-  sunHours.textContent = `${weatherData.sun_hour}h`;
+  sunHours.textContent = `${weatherData.sun_hours}h`;
+  sunDiv.appendChild(sunHours);
 
   temperature.appendChild(iconDown);
   temperature.appendChild(temperatureMin);
@@ -384,11 +392,14 @@ function displayWeatherForecast(weatherData) {
   rainProb.appendChild(iconRainProb);
   rainProb.appendChild(rainProbText);
 
+  secondLineWeather.appendChild(rainProb);
+  secondLineWeather.appendChild(sunDiv);
+
   weatherForTheDay.appendChild(cityName_image);
   weatherForTheDay.appendChild(temperature);
   weatherForTheDay.appendChild(weather);
-  weatherForTheDay.appendChild(rainProb);
-  weatherForTheDay.appendChild(sunHours);
+  weatherForTheDay.appendChild(secondLineWeather);
+
   forecastDiv.appendChild(weatherForTheDay);
 
   forecastDiv.style.display = "flex";
@@ -485,7 +496,7 @@ function display_card(forcast_info) {
       weather_to_text.get(forcast_info[day].weather).includes("voilé") ||
       weather_to_text.get(forcast_info[day].weather).includes("nuageux")
     ) {
-      CardImageWeather.src = "image/weather-icon/cloudy-3-day.svg";
+      CardImageWeather.src = "image/weather-icon/cloudy.svg";
     } else {
       CardImageWeather.style.display = "none";
     }
@@ -500,11 +511,18 @@ function display_card(forcast_info) {
     temp.classList.add("temp");
 
     //min
+    const iconUp = document.createElement("i");
+    iconUp.classList.add("fa-solid", "fa-up-long");
+
     min = document.createElement("p");
     min.classList.add("card_min");
     min.textContent = forcast_info[day].temp_min + "°C";
 
     //max
+
+    const iconDown = document.createElement("i");
+    iconDown.classList.add("fa-solid", "fa-down-long");
+
     max = document.createElement("p");
     max.classList.add("card_max");
     max.textContent = forcast_info[day].temp_max + "°C";
@@ -513,8 +531,10 @@ function display_card(forcast_info) {
     card.appendChild(weather);
     card.appendChild(CardImageWeather);
     card.appendChild(temp);
+    temp.appendChild(iconDown);
     temp.appendChild(min);
 
+    temp.appendChild(iconUp);
     temp.appendChild(max);
     forecast_cards.appendChild(card);
   }
@@ -529,6 +549,7 @@ document
       const inseeCode = selectedOption.value;
       document.getElementById("search-button").style.display = "none";
       document.getElementById("reset-button").style.display = "flex";
+      document.getElementById("forecast_cards").style.display = "flex";
       const weatherInfo = await get_weather_info_from_insee_code(inseeCode, 0);
 
       if (weatherInfo && weatherInfo.forecast) {
