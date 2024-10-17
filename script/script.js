@@ -310,52 +310,86 @@ function displayWeatherForecast(weatherData) {
 
   const weatherForTheDay = document.createElement("div");
   weatherForTheDay.classList.add("weather-for-the-day");
+  const cityName_image = document.createElement("div");
+  cityName_image.classList.add("city-name-image");
 
   const cityName = document.createElement("p");
   cityName.classList.add("city-name");
   const selectedOption =
-  document.getElementById("resultSelect").selectedOptions[0];
+    document.getElementById("resultSelect").selectedOptions[0];
   cityName.textContent = selectedOption.textContent.split(" : ")[0];
 
-
-  const temperature = document.createElement("p");
+  const temperature = document.createElement("div");
   temperature.classList.add("temperature");
-  temperature.textContent = ` max: + ${weatherData.tmax}°C + min: + ${weatherData.tmin}°C`;
-  
+
+  const temperatureMin = document.createElement("p");
+  temperatureMin.classList.add("temperature_min");
+  temperatureMin.textContent = `${weatherData.tmin}°C`;
+
+  const iconUp = document.createElement("i");
+  iconUp.classList.add("fa-solid", "fa-up-long");
+
+  const iconDown = document.createElement("i");
+  iconDown.classList.add("fa-solid", "fa-down-long");
+
+  const temperatureMax = document.createElement("p");
+  temperatureMax.classList.add("temperature_max");
+  temperatureMax.textContent = `${weatherData.tmax}°C`;
+
   const imageWeather = document.createElement("img");
   imageWeather.classList.add("image-weather");
-  
-  if(weather_to_text.get(weatherData.weather).includes("soleil")){
+
+  if (weather_to_text.get(weatherData.weather).includes("Soleil")) {
     imageWeather.src = "image/weather-icon/clear-day.svg";
-  }
-  else if(weather_to_text.get(weatherData.weather).includes("pluie") || weather_to_text.get(weatherData.weather).includes("Pluie")){
+  } else if (
+    weather_to_text.get(weatherData.weather).includes("pluie") ||
+    weather_to_text.get(weatherData.weather).includes("Pluie")
+  ) {
     imageWeather.src = "image/weather-icon/rainy-3.svg";
-  }
-  else if (weather_to_text.get(weatherData.weather).includes("Nuageux") || weather_to_text.get(weatherData.weather).includes("voilé") || weather_to_text.get(weatherData.weather).includes("nuageux")) {
+  } else if (
+    weather_to_text.get(weatherData.weather).includes("Nuageux") ||
+    weather_to_text.get(weatherData.weather).includes("voilé") ||
+    weather_to_text.get(weatherData.weather).includes("nuageux")
+  ) {
     imageWeather.src = "image/weather-icon/cloudy-3-day.svg";
-  }
-  else{
+  } else {
     imageWeather.style.display = "none";
   }
-  
+
   const weather = document.createElement("p");
   weather.classList.add("weather");
   weather.textContent = weather_to_text.get(weatherData.weather);
 
-  const rainProb = document.createElement("p");
+  const rainProb = document.createElement("div");
   rainProb.classList.add("rain-prob");
-  rainProb.textContent = `${weatherData.probarain}%`;
+  const iconRainProb = document.createElement("i");
+  iconRainProb.classList.add("fa-solid", "fa-cloud-rain");
+
+  const rainProbText = document.createElement("p");
+  rainProbText.classList.add("rain-prob-text");
+  rainProbText.textContent = `${weatherData.probarain}%`;
 
   const sunHours = document.createElement("p");
   sunHours.classList.add("sun-hours");
-  sunHours.textContent = `${weatherData.sun_hours}h`;
-  
-  forecastDiv.appendChild(cityName);
-  forecastDiv.appendChild(weather);
-  forecastDiv.appendChild(imageWeather);
-  forecastDiv.appendChild(temperature);
-  forecastDiv.appendChild(rainProb);
-  forecastDiv.appendChild(sunHours);
+  sunHours.textContent = `${weatherData.sun_hour}h`;
+
+  temperature.appendChild(iconDown);
+  temperature.appendChild(temperatureMin);
+  temperature.appendChild(iconUp);
+  temperature.appendChild(temperatureMax);
+
+  cityName_image.appendChild(imageWeather);
+  cityName_image.appendChild(cityName);
+
+  rainProb.appendChild(iconRainProb);
+  rainProb.appendChild(rainProbText);
+
+  weatherForTheDay.appendChild(cityName_image);
+  weatherForTheDay.appendChild(temperature);
+  weatherForTheDay.appendChild(weather);
+  weatherForTheDay.appendChild(rainProb);
+  weatherForTheDay.appendChild(sunHours);
+  forecastDiv.appendChild(weatherForTheDay);
 
   forecastDiv.style.display = "flex";
 }
@@ -438,16 +472,21 @@ function display_card(forcast_info) {
     //icon
     const CardImageWeather = document.createElement("img");
     CardImageWeather.classList.add("card-image-weather");
-    
+
     if (weather_to_text.get(forcast_info[day].weather).includes("Soleil")) {
       CardImageWeather.src = "image/weather-icon/clear-day.svg";
-    } else if (weather_to_text.get(forcast_info[day].weather).includes("pluie") || weather_to_text.get(forcast_info[day].weather).includes("Pluie")) {
+    } else if (
+      weather_to_text.get(forcast_info[day].weather).includes("pluie") ||
+      weather_to_text.get(forcast_info[day].weather).includes("Pluie")
+    ) {
       CardImageWeather.src = "image/weather-icon/rainy-3.svg";
-    } 
-    else if (weather_to_text.get(forcast_info[day].weather).includes("Nuageux") || weather_to_text.get(forcast_info[day].weather).includes("voilé") || weather_to_text.get(forcast_info[day].weather).includes("nuageux")) {
+    } else if (
+      weather_to_text.get(forcast_info[day].weather).includes("Nuageux") ||
+      weather_to_text.get(forcast_info[day].weather).includes("voilé") ||
+      weather_to_text.get(forcast_info[day].weather).includes("nuageux")
+    ) {
       CardImageWeather.src = "image/weather-icon/cloudy-3-day.svg";
-    }
-    else {
+    } else {
       CardImageWeather.style.display = "none";
     }
 

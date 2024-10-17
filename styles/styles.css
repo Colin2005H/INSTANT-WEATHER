@@ -2,6 +2,7 @@
   --bleu: #135fb7;
   --bleu_clair: #2c96e2;
   --box-shadow: 7px 5px 15px -4px rgba(0, 0, 0, 0.75);
+  
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  overflow-x: hidden;
   
 }
 
@@ -36,7 +38,7 @@ nav {
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-size: 3vw;
+  font-size: 5vw;
 }
 
 .title {
@@ -51,8 +53,7 @@ nav {
   background-color: white;
   margin: 3vw;
   border-radius: 1.5vw;
-  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
-  box-shadow: 0px 0px 10px -2px #ffffff;
+  
 }
 
 #results {
@@ -71,9 +72,7 @@ nav {
   border: none;
   padding: 1vw;
   text-align: left;
-  font-size: 2vw;
-  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
-  box-shadow: 0px 0px 10px -2px #ffffff;
+  font-size: 3vw;
   margin-right: 1vw;
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
@@ -85,6 +84,9 @@ nav {
 #inputCodePostal:hover {
   transform: scale(1.05);
   background-color: white;
+  -webkit-box-shadow:0px 0px 200px 10px rgba(1,51,251,1);
+-moz-box-shadow: 0px 0px 200px 10px rgba(1,51,251,1);
+box-shadow: 0px 0px 200px 10px rgba(1,51,251,1);
 }
 
 
@@ -97,6 +99,21 @@ nav {
   animation: morph-in 0.5s ease-in-out;
   margin-left: auto;
   margin-right: auto;
+}
+
+.city-name-image{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-weather{
+  width: 50%;
+  margin: 0 auto;
 }
 
 #reset-button,
@@ -128,45 +145,86 @@ nav {
 }
 
 #forecast {
-  width: 50%;
+  width: 70%;
   min-width: 350px;
   min-height: 300px;
   display: flex;
+  color: white;
   flex-direction: column;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgba(255, 255, 255, 0.7);
-  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
-  box-shadow: 0px 0px 10px -2px #ffffff;
   border-radius: 2vw;
-  color: black;
   transition: 0.5s;
-  margin-top: 5vw;
+  
 }
 
-#forecast:hover {
-  transform: scale(1.05);
-  background-color: white;
+.fa-down-long{
+  color: var(--bleu);
+}
+
+.fa-up-long{
+  color: red;
 }
 
 .city-name {
-  font-size: 4vw;
+  font-size: 7vw;
   text-align: center;
 }
 
 .weather {
-  font-size: 3vw;
+  font-size: 7vw;
   text-align: center;
+}
+
+.image-weather {
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+.rain-prob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  font-size: 5vw;
 }
 
 .temperature {
-  font-size: 5vw;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  font-size: 9vw;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 2vw;
+  transition: 0.5s;
 }
 
-.rain-prob {
-  font-size: 3vw;
+.temperature:hover{
+  background-color: white;
+  transform: scale(1.05);
+}
+
+
+.temperature_min,
+.temperature_max, .rain-prob-text {
+  margin: 0 2vw;
+}
+
+
+.fa-up-long,
+.fa-down-long {
+  margin: 0 0.5vw;
+
+}
+
+
+
+.rain-prob-text {
+  font-size: 5vw;
   text-align: center;
 }
 
@@ -177,11 +235,9 @@ nav {
 
 #resultSelect {
   padding: 1vw;
-  font-size: 1.5vw;
+  font-size: 3vw;
   border: none;
   margin: 1vw;
-  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
-  box-shadow: 0px 0px 10px -2px #ffffff;
   border-radius: 1.5vw;
   min-width: 20%;
   max-width: 50%;
@@ -196,6 +252,9 @@ nav {
 #resultSelect:hover {
   transform: scale(1.05);
   background-color: white;
+  -webkit-box-shadow:0px 0px 200px 10px rgba(1,51,251,1);
+-moz-box-shadow: 0px 0px 200px 10px rgba(1,51,251,1);
+box-shadow: 0px 0px 200px 10px rgba(1,51,251,1);
 }
 
 #card-results {
@@ -255,10 +314,25 @@ nav {
     font-size: 1.5vw;
   }
 
-  .weather-table {
-    width: 70%;
-    font-size: 1.5vw;
+}
+
+@media (max-width: 992px) {
+  #head-bar {
+    font-size: 3vw;
   }
+
+  #inputCodePostal,
+  #search-button,
+  #resultSelect {
+    font-size: 2vw;
+  }
+
+  .block-main {
+    width: 60%;
+    font-size: 2vw;
+  }
+
+
 }
 
 @media (max-width: 768px) {
@@ -288,11 +362,27 @@ nav {
     width: 80%;
     font-size: 2.5vw;
   }
+}
 
-  .weather-table {
-    width: 90%;
-    font-size: 2.5vw;
+@media (max-width: 576px) {
+  #head-bar {
+    font-size: 5vw;
   }
+
+  #inputCodePostal,
+  #search-button,
+  #resultSelect,
+  #check,
+  #reset-button {
+    font-size: 4vw;
+  }
+
+  .block-main {
+    width: 90%;
+    font-size: 3vw;
+  }
+
+
 }
 
 @media (max-width: 480px) {
@@ -313,11 +403,8 @@ nav {
     font-size: 3vw;
   }
 
-  .weather-table {
-    width: 100%;
-    font-size: 3vw;
-  }
-
+  
+  
   #forecast_cards {
     flex-direction: column;
     gap: 2vw;
@@ -325,6 +412,12 @@ nav {
 
   .card {
     min-width: 100%;
+  }
+
+  .card_day,
+  .card_weather,
+  .temp {
+    font-size: 4vw;
   }
 }
 
@@ -344,11 +437,8 @@ nav {
 .card {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 1.5vw;
-  min-width: 300px;
-  min-height: 300px;
+  padding: 2vw;
   text-align: center;
-  -webkit-box-shadow: 0px 0px 10px -2px #ffffff;
-  box-shadow: 0px 0px 10px -2px #ffffff;
   flex: 1 1 auto;
   scroll-snap-align: center;
   transition: 0.5s;
@@ -358,6 +448,34 @@ nav {
   transform:translate3d(0, -10px, 0);
   background-color: white;
 }
+
+.card-image-weather{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.card_day{
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.card_weather{
+  font-size: 5vh;
+  white-space: normal;
+  word-wrap: break-word;
+
+}
+
+.temp{
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+.car_min{
+  color: blue;
+}
+
+
 
 
 
