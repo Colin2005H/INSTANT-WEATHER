@@ -301,7 +301,6 @@ document
     }
   });
 
-// Fonction pour afficher les résultats météo dans un tableau
 function displayWeatherForecast(weatherData) {
   const forecastDiv = document.getElementById("forecast");
 

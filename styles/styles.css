@@ -151,7 +151,7 @@ nav {
   display: flex;
   color: white;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   margin-left: auto;
   margin-right: auto;
   border-radius: 2vw;
@@ -204,15 +204,12 @@ nav {
   justify-content: center;
   gap: 1vw;
   font-size: 9vw;
-  color: black;
-  background-color: rgba(255, 255, 255, 0.7);
+  color: white;
   border-radius: 2vw;
   transition: 0.5s;
 }
 
 .temperature:hover {
-  background-color: white;
-  transform: scale(1.05);
 }
 
 .temperature_min,
@@ -225,6 +222,8 @@ nav {
 .fa-up-long,
 .fa-down-long {
   margin: 0 0.5vw;
+  border-color: white;
+  border-width: 2px;
 }
 
 .rain-prob-text {
@@ -441,6 +440,7 @@ nav {
   border-radius: 1.5vw;
   text-align: center;
   min-width: 350px;
+  min-height: 300px;
   max-height: 600px;
   flex: 1 1 auto;
   scroll-snap-align: center;
