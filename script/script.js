@@ -267,8 +267,10 @@ document
     }
   });
 
-// Fonction pour afficher les résultats météo dans un tableau
-function displayWeatherForecast(weatherData) {
+//Update main weather forcast display
+function displayWeatherForecast(weather_forcast_info) {
+  console.log(weather_forcast_info);
+
   const forecastDiv = document.getElementById("forecast");
 
   // Vider le contenu précédent du div
@@ -374,12 +376,13 @@ function displayWeatherForecast(weatherData) {
   forecastDiv.style.display = "flex";
 }
 
-function display_card(forcast_info) {
+function display_card(weather_forcast_info, nb_total_day) {
   const forecast_cards = document.getElementById("forecast_cards");
 
-  for (day = 0; day < forcast_info.length; day++) {
+  for (day = 0; day < nb_total_day; day++) {
     card = document.createElement("div");
     card.classList.add("card");
+    card.setAttribute('id',day);
 
     //day
     day_name = document.createElement("p");
@@ -393,17 +396,17 @@ function display_card(forcast_info) {
     const CardImageWeather = document.createElement("img");
     CardImageWeather.classList.add("card-image-weather");
 
-    if (weather_to_text.get(forcast_info[day].weather).includes("Soleil")) {
+    if (weather_to_text.get(weather_forcast_info[day].weather).includes("Soleil")) {
       CardImageWeather.src = "image/weather-icon/clear-day.svg";
     } else if (
-      weather_to_text.get(forcast_info[day].weather).includes("pluie") ||
-      weather_to_text.get(forcast_info[day].weather).includes("Pluie")
+      weather_to_text.get(weather_forcast_info[day].weather).includes("pluie") ||
+      weather_to_text.get(weather_forcast_info[day].weather).includes("Pluie")
     ) {
       CardImageWeather.src = "image/weather-icon/rainy-3.svg";
     } else if (
-      weather_to_text.get(forcast_info[day].weather).includes("Nuageux") ||
-      weather_to_text.get(forcast_info[day].weather).includes("voilé") ||
-      weather_to_text.get(forcast_info[day].weather).includes("nuageux")
+      weather_to_text.get(weather_forcast_info[day].weather).includes("Nuageux") ||
+      weather_to_text.get(weather_forcast_info[day].weather).includes("voilé") ||
+      weather_to_text.get(weather_forcast_info[day].weather).includes("nuageux")
     ) {
       CardImageWeather.src = "image/weather-icon/cloudy.svg";
     } else {
@@ -413,7 +416,7 @@ function display_card(forcast_info) {
     //weather
     weather = document.createElement("p");
     weather.classList.add("card_weather");
-    weather.textContent = weather_to_text.get(forcast_info[day].weather);
+    weather.textContent = weather_to_text.get(weather_forcast_info[day].weather);
 
     //temp
     temp = document.createElement("div");
@@ -425,7 +428,7 @@ function display_card(forcast_info) {
 
     min = document.createElement("p");
     min.classList.add("card_min");
-    min.textContent = forcast_info[day].temp_min + "°C";
+    min.textContent = weather_forcast_info[day].temp_min + "°C";
 
     //max
     const iconDown = document.createElement("i");
@@ -433,7 +436,7 @@ function display_card(forcast_info) {
 
     max = document.createElement("p");
     max.classList.add("card_max");
-    max.textContent = forcast_info[day].temp_max + "°C";
+    max.textContent = weather_forcast_info[day].temp_max + "°C";
 
     card.appendChild(day_name);
     card.appendChild(weather);
@@ -446,9 +449,22 @@ function display_card(forcast_info) {
     temp.appendChild(max);
     forecast_cards.appendChild(card);
   }
+  
+}
+all_card = document.getElementsByClassName("card");
+  
+function card_listener(all_card){
+  card_element = "";
+  for(card_index = 0 ; card_index < all_card.length; card_index++){
+    card_element = all_card[card_index];
+    const id = card_element.id;
+    card_element.addEventListener("click", () => {
+      displayWeatherForecast(weather_forcast_info_all_day[id]);
+    })
+  }
 }
 
-//LISENER
+//LISTENER
 document
   .getElementById("search-button")
   .addEventListener("click", async function () {
@@ -513,7 +529,11 @@ document
 
       if (weather_forcast_info_all_day) {
         displayWeatherForecast(weather_forcast_info_all_day[0]);
-        display_card(weather_forcast_info_all_day);
+
+        display_card(weather_forcast_info_all_day, 7);
+        console.log(document.getElementsByClassName("card"));
+        card_listener(document.getElementsByClassName("card"));
+
       } else {
         console.error("Impossible de récupérer les informations météo");
       }
