@@ -1,191 +1,76 @@
-//convert weather int to text
-const weather_to_text = new Map();
-weather_to_text.set(0, "Soleil");
-weather_to_text.set(1, "Peu nuageux");
-weather_to_text.set(2, "Ciel voilé");
-weather_to_text.set(3, "Nuageux");
-weather_to_text.set(4, "Très nuageux");
-weather_to_text.set(5, "Couvert");
-weather_to_text.set(6, "Brouillard");
-weather_to_text.set(7, "Brouillard givrant");
-weather_to_text.set(10, "Pluie faible");
-weather_to_text.set(11, "Pluie modérée");
-weather_to_text.set(12, "Pluie forte");
-weather_to_text.set(13, "Pluie faible verglaçante");
-weather_to_text.set(14, "Pluie modérée verglaçante");
-weather_to_text.set(15, "Pluie forte verglaçante");
-weather_to_text.set(16, "Bruine");
-weather_to_text.set(20, "Neige faible");
-weather_to_text.set(21, "Neige modérée");
-weather_to_text.set(22, "Neige forte");
-weather_to_text.set(30, "Pluie et neige mêlées faibles");
-weather_to_text.set(31, "Pluie et neige mêlées modérées");
-weather_to_text.set(32, "Pluie et neige mêlées fortes");
-weather_to_text.set(40, "Averses de pluie locales et faibles");
-weather_to_text.set(41, "Averses de pluie locales");
-weather_to_text.set(42, "Averses locales et fortes");
-weather_to_text.set(43, "Averses de pluie faibles");
-weather_to_text.set(44, "Averses de pluie");
-weather_to_text.set(45, "Averses de pluie fortes");
-weather_to_text.set(46, "Averses de pluie faibles et fréquentes");
-weather_to_text.set(47, "Averses de pluie fréquentes");
-weather_to_text.set(48, "Averses de pluie fortes et fréquentes");
-weather_to_text.set(60, "Averses de neige localisées et faibles");
-weather_to_text.set(61, "Averses de neige localisées");
-weather_to_text.set(62, "Averses de neige localisées et fortes");
-weather_to_text.set(63, "Averses de neige faibles");
-weather_to_text.set(64, "Averses de neige");
-weather_to_text.set(65, "Averses de neige fortes");
-weather_to_text.set(66, "Averses de neige faibles et fréquentes");
-weather_to_text.set(67, "Averses de neige fréquentes");
-weather_to_text.set(68, "Averses de neige fortes et fréquentes");
-weather_to_text.set(
-  70,
-  "Averses de pluie et neige mêlées localisées et faibles"
-);
-weather_to_text.set(71, "Averses de pluie et neige mêlées localisées");
-weather_to_text.set(
-  72,
-  "Averses de pluie et neige mêlées localisées et fortes"
-);
-weather_to_text.set(73, "Averses de pluie et neige mêlées faibles");
-weather_to_text.set(74, "Averses de pluie et neige mêlées");
-weather_to_text.set(75, "Averses de pluie et neige mêlées fortes");
-weather_to_text.set(
-  76,
-  "Averses de pluie et neige mêlées faibles et nombreuses"
-);
-weather_to_text.set(77, "Averses de pluie et neige mêlées fréquentes");
-weather_to_text.set(
-  78,
-  "Averses de pluie et neige mêlées fortes et fréquentes"
-);
-weather_to_text.set(100, "Orages faibles et locaux");
-weather_to_text.set(101, "Orages locaux");
-weather_to_text.set(102, "Orages fort et locaux");
-weather_to_text.set(103, "Orages faibles");
-weather_to_text.set(104, "Orages");
-weather_to_text.set(105, "Orages forts");
-weather_to_text.set(106, "Orages faibles et fréquents");
-weather_to_text.set(107, "Orages fréquents");
-weather_to_text.set(108, "Orages forts et fréquents");
-weather_to_text.set(120, "Orages faibles et locaux de neige ou grésil");
-weather_to_text.set(121, "Orages locaux de neige ou grésil");
-weather_to_text.set(122, "Orages locaux de neige ou grésil");
-weather_to_text.set(123, "Orages faibles de neige ou grésil");
-weather_to_text.set(124, "Orages de neige ou grésil");
-weather_to_text.set(125, "Orages de neige ou grésil");
-weather_to_text.set(126, "Orages faibles et fréquents de neige ou grésil");
-weather_to_text.set(127, "Orages fréquents de neige ou grésil");
-weather_to_text.set(128, "Orages fréquents de neige ou grésil");
-weather_to_text.set(
-  130,
-  "Orages faibles et locaux de pluie et neige mêlées ou grésil"
-);
-weather_to_text.set(131, "Orages locaux de pluie et neige mêlées ou grésil");
-weather_to_text.set(
-  132,
-  "Orages fort et locaux de pluie et neige mêlées ou grésil"
-);
-weather_to_text.set(133, "Orages faibles de pluie et neige mêlées ou grésil");
-weather_to_text.set(134, "Orages de pluie et neige mêlées ou grésil");
-weather_to_text.set(135, "Orages forts de pluie et neige mêlées ou grésil");
-weather_to_text.set(
-  136,
-  "Orages faibles et fréquents de pluie et neige mêlées ou grésil"
-);
-weather_to_text.set(137, "Orages fréquents de pluie et neige mêlées ou grésil");
-weather_to_text.set(
-  138,
-  "Orages forts et fréquents de pluie et neige mêlées ou grésil"
-);
-weather_to_text.set(140, "Pluies orageuses");
-weather_to_text.set(141, "Pluie et neige mêlées à caractère orageux");
-weather_to_text.set(142, "Neige à caractère orageux");
-weather_to_text.set(210, "Pluie faible intermittente");
-weather_to_text.set(211, "Pluie modérée intermittente");
-weather_to_text.set(212, "Pluie forte intermittente");
-weather_to_text.set(220, "Neige faible intermittente");
-weather_to_text.set(221, "Neige modérée intermittente");
-weather_to_text.set(222, "Neige forte intermittente");
-weather_to_text.set(230, "Pluie et neige mêlées");
-weather_to_text.set(231, "Pluie et neige mêlées");
-weather_to_text.set(232, "Pluie et neige mêlées");
-weather_to_text.set(235, "Averses de grêle");
-
 //RETURN an array with the INSEE code and name of each commune with the postal code given
 // Array[
 // 0: Array[insee code, name]
 // 1: ...
 // ]
 //
-async function get_INSEE_code_from_CP(cp) {
+async function getINSEECodeFromCP(cp) {
   const request = "https://geo.api.gouv.fr/communes?codePostal=" + cp;
-  const code_INSEE = [];
+  const codeINSEE = [];
   try {
     const promise = await fetch(request);
     const result = await promise.json();
     for (let i = 0; i < result.length; i++) {
-      code_INSEE[i] = [result[i].code, result[i].nom];
+      codeINSEE[i] = [result[i].code, result[i].nom];
     }
   } catch (e) {
     console.error("Erreur lors de la récupération du code INSEE :", e);
   }
-  return code_INSEE;
+  return codeINSEE;
 }
 
-//RETURN a list of forcast info for each day starting from today up to <nb_day> (max 14 day)
+//RETURN a list of forcast info for each day starting from today up to <nbDay> (max 14 day)
 //access days by the array index (sorted chronologically starting from today)
 //Array[
 //0: {
 //     "latitude" : ,         //latitude
 //     "longitude" : ,        //longitude
-//     "weather" : ,          //int to convert using weather_to_text.get(int)
-//     "temp_min" : ,         //minimum temperature from the day
-//     "temp_max" : ,         //maximum temperature from the day
-//     "rain_prob" : ,        //probability of rain
-//     "rain_amont" : ,       //quantity of rain in mm
-//     "sunshine_hour" : ,    //number of hour of sun exposure
-//     "avg_wind" : ,         //average wind at 10 m in km/h
-//     "wind_direction": ,    //direction the wind is comming in degree
+//     "weather" : ,          //int to convert using weatherToText.get(int)
+//     "tempMin" : ,         //minimum temperature from the day
+//     "tempMax" : ,         //maximum temperature from the day
+//     "rainProb" : ,        //probability of rain
+//     "rainAmont" : ,       //quantity of rain in mm
+//     "sunshineHour" : ,    //number of hour of sun exposure
+//     "avgWind" : ,         //average wind at 10 m in km/h
+//     "windDirection": ,    //direction the wind is comming in degree
 //    }
 //1: ...
 //
-async function get_forcast_info(code_insee, nb_day) {
-  if (nb_day < 1 || nb_day > 14) {
+async function getForcastInfo(codeINSEE, NBDay) {
+  if (NBDay < 1 || NBDay > 14) {
     throw new Error("Can get forcast for 1 to 14 days");
   }
   request =
     "https://api.meteo-concept.com/api/forecast/daily?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee=" +
-    code_insee;
-  api_reponce = 0;
+    codeINSEE;
+  apiReponce = 0;
 
   try {
     promise = await fetch(request);
     result = await promise.json();
-    api_reponce = result;
+    apiReponce = result;
   } catch (e) {}
 
-  api_forcast_reponce = api_reponce.forecast;
-  forcast_info = [];
+  apiForcastReponce = apiReponce.forecast;
+  forcastInfo = [];
 
-  for (i = 0; i < nb_day; i++) {
-    day_info = {
-      latitude: api_reponce.city.latitude, //latitude
-      longitude: api_reponce.city.longitude, //longitude
-      weather: api_forcast_reponce[i].weather, //int to convert using weather_to_text.get(int)
-      temp_min: api_forcast_reponce[i].tmin, //minimum temperature from
-      temp_max: api_forcast_reponce[i].tmax, //minimum temperature from the day
-      rain_prob: api_forcast_reponce[i].probarain, //probability of rain
-      rain_amont: api_forcast_reponce[i].etp, //quantity of rain in mm
-      sunshine_hour: api_forcast_reponce[i].sun_hours, //number of hour of sun exposure
-      avg_wind: api_forcast_reponce[i].wind10m, //average wind at 10 m in km/h
-      wind_direction: api_forcast_reponce[i].dirwind10m, //direction the wind is comming in degree
+  for (i = 0; i < nbDay; i++) {
+    dayInfo = {
+      latitude: apiReponce.city.latitude, //latitude
+      longitude: apiReponce.city.longitude, //longitude
+      weather: apiForcastReponce[i].weather, //int to convert using weatherToText.get(int)
+      tempMin: apiForcastReponce[i].tmin, //minimum temperature from
+      tempMax: apiForcastReponce[i].tmax, //minimum temperature from the day
+      rainProb: apiForcastReponce[i].probarain, //probability of rain
+      rainAmont: apiForcastReponce[i].etp, //quantity of rain in mm
+      sunshineHour: apiForcastReponce[i].sunHours, //number of hour of sun exposure
+      avgWind: apiForcastReponce[i].wind10m, //average wind at 10 m in km/h
+      windDirection: apiForcastReponce[i].dirwind10m, //direction the wind is comming in degree
     };
 
-    forcast_info[i] = day_info;
+    forcastInfo[i] = dayInfo;
   }
-  return forcast_info;
+  return forcastInfo;
 }
 
 function regex(input) {
@@ -196,20 +81,20 @@ function regex(input) {
 }
 
 //fonction pour afficher les résultats dans le menu déroulant
-function displayResultsCities(codesInsee) {
+function displayResultsCities(codeINSEE) {
   const resultSelect = document.getElementById("resultSelect");
 
   resultSelect.innerHTML = "";
 
   //si aucun code INSEE n'est trouvé
-  if (codesInsee.length === 0) {
+  if (codeINSEE.length === 0) {
     const noResultOption = document.createElement("option");
     noResultOption.textContent = "Aucun code INSEE trouvé pour ce code postal";
     noResultOption.disabled = true;
     resultSelect.appendChild(noResultOption);
   } else {
     //ajout des résultats sous forme d'options dans le select
-    codesInsee.forEach(([code, nom]) => {
+    codeINSEE.forEach(([code, nom]) => {
       const option = document.createElement("option");
       option.value = code;
       option.textContent = `${nom} : ${code}`;
@@ -223,8 +108,8 @@ document
   .addEventListener("click", async function () {
     inputCodePostal = document.getElementById("inputCodePostal").value;
     if (regex(inputCodePostal)) {
-      const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-      displayResultsCities(codesInsee);
+      const codeINSEE = await getINSEECodeFromCP(inputCodePostal);
+      displayResultsCities(codeINSEE);
       cardResults = document.getElementById("card-results");
       cardResults.style.display = "flex";
       cardResults.style.animation = "slideIn 0.5s forwards";
@@ -240,8 +125,8 @@ document
     if (event.key === "Enter") {
       inputCodePostal = document.getElementById("inputCodePostal").value;
       if (regex(inputCodePostal)) {
-        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-        displayResultsCities(codesInsee);
+        const codeINSEE = await getINSEECodeFromCP(inputCodePostal);
+        displayResultsCities(codeINSEE);
         cardResults = document.getElementById("card-results");
         cardResults.style.display = "flex";
         cardResults.style.animation = "slideIn 0.5s forwards";
@@ -252,8 +137,8 @@ document
   });
 
 //Update main weather forcast display
-function displayWeatherForecast(weather_forcast_info) {
-  console.log(weather_forcast_info);
+function displayWeatherForecast(weatherForcastInfo) {
+  console.log(weatherForcastInfo);
 
   const forecastDiv = document.getElementById("forecast");
 
@@ -262,8 +147,8 @@ function displayWeatherForecast(weather_forcast_info) {
 
   const weatherForTheDay = document.createElement("div");
   weatherForTheDay.classList.add("weather-for-the-day");
-  const cityName_image = document.createElement("div");
-  cityName_image.classList.add("city-name-image");
+  const cityNameImage = document.createElement("div");
+  cityNameImage.classList.add("city-name-image");
 
   const cityName = document.createElement("p");
   cityName.classList.add("city-name");
@@ -276,7 +161,7 @@ function displayWeatherForecast(weather_forcast_info) {
 
   const temperatureMin = document.createElement("p");
   temperatureMin.classList.add("temperature_min");
-  temperatureMin.textContent = `${weather_forcast_info.temp_min}°C`;
+  temperatureMin.textContent = `${weatherForcastInfo.tempMin}°C`;
 
   const iconUp = document.createElement("i");
   iconUp.classList.add("fa-solid", "fa-up-long");
@@ -286,22 +171,22 @@ function displayWeatherForecast(weather_forcast_info) {
 
   const temperatureMax = document.createElement("p");
   temperatureMax.classList.add("temperature_max");
-  temperatureMax.textContent = `${weather_forcast_info.temp_max}°C`;
+  temperatureMax.textContent = `${weatherForcastInfo.tempMax}°C`;
 
   const imageWeather = document.createElement("img");
   imageWeather.classList.add("image-weather");
 
-  if (weather_to_text.get(weather_forcast_info.weather).includes("Soleil")) {
+  if (weatherToText.get(weatherForcastInfo.weather).includes("Soleil")) {
     imageWeather.src = "image/weather-icon/clear-day.svg";
   } else if (
-    weather_to_text.get(weather_forcast_info.weather).includes("pluie") ||
-    weather_to_text.get(weather_forcast_info.weather).includes("Pluie")
+    weatherToText.get(weatherForcastInfo.weather).includes("pluie") ||
+    weatherToText.get(weatherForcastInfo.weather).includes("Pluie")
   ) {
     imageWeather.src = "image/weather-icon/rainy-3.svg";
   } else if (
-    weather_to_text.get(weather_forcast_info.weather).includes("Nuageux") ||
-    weather_to_text.get(weather_forcast_info.weather).includes("voilé") ||
-    weather_to_text.get(weather_forcast_info.weather).includes("nuageux")
+    weatherToText.get(weatherForcastInfo.weather).includes("Nuageux") ||
+    weatherToText.get(weatherForcastInfo.weather).includes("voilé") ||
+    weatherToText.get(weatherForcastInfo.weather).includes("nuageux")
   ) {
     imageWeather.src = "image/weather-icon/cloudy.svg";
   } else {
@@ -312,7 +197,7 @@ function displayWeatherForecast(weather_forcast_info) {
   secondLineWeather.classList.add("second-line-weather");
   const weather = document.createElement("p");
   weather.classList.add("weather");
-  weather.textContent = weather_to_text.get(weather_forcast_info.weather);
+  weather.textContent = weatherToText.get(weatherForcastInfo.weather);
 
   const rainProb = document.createElement("div");
   rainProb.classList.add("rain-prob");
@@ -321,17 +206,17 @@ function displayWeatherForecast(weather_forcast_info) {
 
   const rainProbText = document.createElement("p");
   rainProbText.classList.add("rain-prob-text");
-  rainProbText.textContent = `${weather_forcast_info.rain_prob}%`;
+  rainProbText.textContent = `${weatherForcastInfo.rainProb}%`;
 
   const sunDiv = document.createElement("div");
   sunDiv.classList.add("sun-div");
   const iconSun = document.createElement("i");
   iconSun.classList.add("fa-regular", "fa-sun");
 
-  //sun_hour
+  //sunHour
   const sunHours = document.createElement("p");
   sunHours.classList.add("sun-hours");
-  sunHours.textContent = `${weather_forcast_info.sunshine_hour}h`;
+  sunHours.textContent = `${weatherForcastInfo.sunshineHour}h`;
 
   sunDiv.appendChild(iconSun);
   sunDiv.appendChild(sunHours);
@@ -341,8 +226,8 @@ function displayWeatherForecast(weather_forcast_info) {
   temperature.appendChild(iconUp);
   temperature.appendChild(temperatureMax);
 
-  cityName_image.appendChild(imageWeather);
-  cityName_image.appendChild(cityName);
+  cityNameImage.appendChild(imageWeather);
+  cityNameImage.appendChild(cityName);
 
   rainProb.appendChild(iconRainProb);
   rainProb.appendChild(rainProbText);
@@ -350,7 +235,7 @@ function displayWeatherForecast(weather_forcast_info) {
   secondLineWeather.appendChild(rainProb);
   secondLineWeather.appendChild(sunDiv);
 
-  weatherForTheDay.appendChild(cityName_image);
+  weatherForTheDay.appendChild(cityNameImage);
   weatherForTheDay.appendChild(temperature);
   weatherForTheDay.appendChild(weather);
   weatherForTheDay.appendChild(secondLineWeather);
@@ -360,37 +245,37 @@ function displayWeatherForecast(weather_forcast_info) {
   forecastDiv.style.display = "flex";
 }
 
-function display_card(weather_forcast_info, nb_total_day) {
-  const forecast_cards = document.getElementById("forecast_cards");
+function displayCard(weatherForcastInfo, nbTotalDay) {
+  const forecastCards = document.getElementById("forecast_cards");
 
-  for (day = 0; day < nb_total_day; day++) {
+  for (day = 0; day < nbTotalDay; day++) {
     card = document.createElement("div");
     card.classList.add("card");
     card.setAttribute('id',day);
 
     //day
-    day_name = document.createElement("p");
-    day_name.classList.add("card_day");
+    dayName = document.createElement("p");
+    dayName.classList.add("card_day");
     const date = new Date();
     date.setDate(date.getDate() + day); //increment the date by the current day index
     const options = { weekday: "long", month: "long", day: "numeric" };
-    day_name.textContent = date.toLocaleDateString("fr-FR", options);
+    dayName.textContent = date.toLocaleDateString("fr-FR", options);
 
     //icon
     const CardImageWeather = document.createElement("img");
     CardImageWeather.classList.add("card-image-weather");
 
-    if (weather_to_text.get(weather_forcast_info[day].weather).includes("Soleil")) {
+    if (weatherToText.get(weatherForcastInfo[day].weather).includes("Soleil")) {
       CardImageWeather.src = "image/weather-icon/clear-day.svg";
     } else if (
-      weather_to_text.get(weather_forcast_info[day].weather).includes("pluie") ||
-      weather_to_text.get(weather_forcast_info[day].weather).includes("Pluie")
+      weatherToText.get(weatherForcastInfo[day].weather).includes("pluie") ||
+      weatherToText.get(weatherForcastInfo[day].weather).includes("Pluie")
     ) {
       CardImageWeather.src = "image/weather-icon/rainy-3.svg";
     } else if (
-      weather_to_text.get(weather_forcast_info[day].weather).includes("Nuageux") ||
-      weather_to_text.get(weather_forcast_info[day].weather).includes("voilé") ||
-      weather_to_text.get(weather_forcast_info[day].weather).includes("nuageux")
+      weatherToText.get(weatherForcastInfo[day].weather).includes("Nuageux") ||
+      weatherToText.get(weatherForcastInfo[day].weather).includes("voilé") ||
+      weatherToText.get(weatherForcastInfo[day].weather).includes("nuageux")
     ) {
       CardImageWeather.src = "image/weather-icon/cloudy.svg";
     } else {
@@ -400,7 +285,7 @@ function display_card(weather_forcast_info, nb_total_day) {
     //weather
     weather = document.createElement("p");
     weather.classList.add("card_weather");
-    weather.textContent = weather_to_text.get(weather_forcast_info[day].weather);
+    weather.textContent = weatherToText.get(weatherForcastInfo[day].weather);
 
     //temp
     temp = document.createElement("div");
@@ -412,7 +297,7 @@ function display_card(weather_forcast_info, nb_total_day) {
 
     min = document.createElement("p");
     min.classList.add("card_min");
-    min.textContent = weather_forcast_info[day].temp_min + "°C";
+    min.textContent = weatherForcastInfo[day].tempMin + "°C";
 
     //max
     const iconDown = document.createElement("i");
@@ -420,9 +305,9 @@ function display_card(weather_forcast_info, nb_total_day) {
 
     max = document.createElement("p");
     max.classList.add("card_max");
-    max.textContent = weather_forcast_info[day].temp_max + "°C";
+    max.textContent = weatherForcastInfo[day].tempMax + "°C";
 
-    card.appendChild(day_name);
+    card.appendChild(dayName);
     card.appendChild(weather);
     card.appendChild(CardImageWeather);
     card.appendChild(temp);
@@ -431,19 +316,18 @@ function display_card(weather_forcast_info, nb_total_day) {
 
     temp.appendChild(iconUp);
     temp.appendChild(max);
-    forecast_cards.appendChild(card);
+    forecastCards.appendChild(card);
   }
   
 }
-all_card = document.getElementsByClassName("card");
   
-function card_listener(all_card){
-  card_element = "";
-  for(card_index = 0 ; card_index < all_card.length; card_index++){
-    card_element = all_card[card_index];
-    const id = card_element.id;
-    card_element.addEventListener("click", () => {
-      displayWeatherForecast(weather_forcast_info_all_day[id]);
+function cardListener(allCard){
+  cardElement = "";
+  for(cardIndex = 0 ; cardIndex < allCard.length; cardIndex++){
+    cardElement = allCard[cardIndex];
+    const id = cardElement.id;
+    cardElement.addEventListener("click", () => {
+      displayWeatherForecast(weatherForcastInfoAllDay[id]);
     })
   }
 }
@@ -454,8 +338,8 @@ document
   .addEventListener("click", async function () {
     inputCodePostal = document.getElementById("inputCodePostal").value;
     if (regex(inputCodePostal)) {
-      const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-      displayResultsCities(codesInsee);
+      const codeINSEE = await getINSEECodeFromCP(inputCodePostal);
+      displayResultsCities(codeINSEE);
       cardResults = document.getElementById("card-results");
       cardResults.style.display = "flex";
       cardResults.style.animation = "slideIn 0.5s forwards";
@@ -470,8 +354,8 @@ document
     if (event.key === "Enter") {
       inputCodePostal = document.getElementById("inputCodePostal").value;
       if (regex(inputCodePostal)) {
-        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-        displayResultsCities(codesInsee);
+        const codeINSEE = await getINSEECodeFromCP(inputCodePostal);
+        displayResultsCities(codeINSEE);
         cardResults = document.getElementById("card-results");
         cardResults.style.display = "flex";
         cardResults.style.animation = "slideIn 0.5s forwards";
@@ -487,8 +371,8 @@ document
     if (event.key === "Enter") {
       inputCodePostal = document.getElementById("inputCodePostal").value;
       if (regex(inputCodePostal)) {
-        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-        displayResultsCities(codesInsee);
+        const codeINSEE = await getINSEECodeFromCP(inputCodePostal);
+        displayResultsCities(codeINSEE);
         cardResults = document.getElementById("card-results");
         cardResults.style.display = "flex";
         cardResults.style.animation = "slideIn 0.5s forwards";
@@ -508,15 +392,15 @@ document
       document.getElementById("search-button").style.display = "none";
       document.getElementById("reset-button").style.display = "flex";
       document.getElementById("forecast_cards").style.display = "flex";
-      weather_forcast_info_all_day = await get_forcast_info(selectedOption, 7);
-      console.log(weather_forcast_info_all_day);
+      weatherForcastInfoAllDay = await getForcastInfo(selectedOption, 7);
+      console.log(weatherForcastInfoAllDay);
 
-      if (weather_forcast_info_all_day) {
-        displayWeatherForecast(weather_forcast_info_all_day[0]);
+      if (weatherForcastInfoAllDay) {
+        displayWeatherForecast(weatherForcastInfoAllDay[0]);
 
-        display_card(weather_forcast_info_all_day, 7);
+        displayCard(weatherForcastInfoAllDay, 7);
         console.log(document.getElementsByClassName("card"));
-        card_listener(document.getElementsByClassName("card"));
+        cardListener(document.getElementsByClassName("card"));
 
       } else {
         console.error("Impossible de récupérer les informations météo");
