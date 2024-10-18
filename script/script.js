@@ -229,9 +229,10 @@ document
       cardResults.style.display = "flex";
       cardResults.style.animation = "slideIn 0.5s forwards";
     } else {
-      console.error("Veuillez entrer un code postal valide.");
+      document.getElementById("inputCodePostal").value = "";
     }
   });
+
 
 document
   .getElementById("inputCodePostal")
@@ -245,24 +246,7 @@ document
         cardResults.style.display = "flex";
         cardResults.style.animation = "slideIn 0.5s forwards";
       } else {
-        console.error("Veuillez entrer un code postal valide.");
-      }
-    }
-  });
-
-document
-  .getElementById("inputCodePostal")
-  .addEventListener("keypress", async function (event) {
-    if (event.key === "Enter") {
-      inputCodePostal = document.getElementById("inputCodePostal").value;
-      if (regex(inputCodePostal)) {
-        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
-        displayResultsCities(codesInsee);
-        cardResults = document.getElementById("card-results");
-        cardResults.style.display = "flex";
-        cardResults.style.animation = "slideIn 0.5s forwards";
-      } else {
-        console.error("Veuillez entrer un code postal valide.");
+        document.getElementById("inputCodePostal").value = "";
       }
     }
   });
