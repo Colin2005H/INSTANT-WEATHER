@@ -218,12 +218,59 @@ function displayResultsCities(codesInsee) {
   }
 }
 
-//Global variable with weater forcast info
-var weather_forcast_info_all_day;
+document
+  .getElementById("search-button")
+  .addEventListener("click", async function () {
+    inputCodePostal = document.getElementById("inputCodePostal").value;
+    if (regex(inputCodePostal)) {
+      const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
+      displayResultsCities(codesInsee);
+      cardResults = document.getElementById("card-results");
+      cardResults.style.display = "flex";
+      cardResults.style.animation = "slideIn 0.5s forwards";
+    } else {
+      console.error("Veuillez entrer un code postal valide.");
+    }
+  });
+
+document
+  .getElementById("inputCodePostal")
+  .addEventListener("keypress", async function (event) {
+    if (event.key === "Enter") {
+      inputCodePostal = document.getElementById("inputCodePostal").value;
+      if (regex(inputCodePostal)) {
+        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
+        displayResultsCities(codesInsee);
+        cardResults = document.getElementById("card-results");
+        cardResults.style.display = "flex";
+        cardResults.style.animation = "slideIn 0.5s forwards";
+      } else {
+        console.error("Veuillez entrer un code postal valide.");
+      }
+    }
+  });
+
+document
+  .getElementById("inputCodePostal")
+  .addEventListener("keypress", async function (event) {
+    if (event.key === "Enter") {
+      inputCodePostal = document.getElementById("inputCodePostal").value;
+      if (regex(inputCodePostal)) {
+        const codesInsee = await get_INSEE_code_from_CP(inputCodePostal);
+        displayResultsCities(codesInsee);
+        cardResults = document.getElementById("card-results");
+        cardResults.style.display = "flex";
+        cardResults.style.animation = "slideIn 0.5s forwards";
+      } else {
+        console.error("Veuillez entrer un code postal valide.");
+      }
+    }
+  });
 
 //Update main weather forcast display
 function displayWeatherForecast(weather_forcast_info) {
   console.log(weather_forcast_info);
+
   const forecastDiv = document.getElementById("forecast");
 
   // Vider le contenu précédent du div
@@ -236,7 +283,8 @@ function displayWeatherForecast(weather_forcast_info) {
 
   const cityName = document.createElement("p");
   cityName.classList.add("city-name");
-  const selectedOption = document.getElementById("resultSelect").selectedOptions[0];
+  const selectedOption =
+    document.getElementById("resultSelect").selectedOptions[0];
   cityName.textContent = selectedOption.textContent.split(" : ")[0];
 
   const temperature = document.createElement("div");
@@ -295,7 +343,7 @@ function displayWeatherForecast(weather_forcast_info) {
   sunDiv.classList.add("sun-div");
   const iconSun = document.createElement("i");
   iconSun.classList.add("fa-regular", "fa-sun");
-  
+
   //sun_hour
   const sunHours = document.createElement("p");
   sunHours.classList.add("sun-hours");
@@ -466,11 +514,11 @@ document
     }
   });
 
-
 document
   .getElementById("check")
   .addEventListener("click", async function checkBouton() {
-    const selectedOption = document.getElementById("resultSelect").selectedOptions[0];
+    const selectedOption =
+      document.getElementById("resultSelect").selectedOptions[0];
     if (selectedOption) {
       const inseeCode = selectedOption.value;
       document.getElementById("search-button").style.display = "none";
@@ -481,6 +529,7 @@ document
 
       if (weather_forcast_info_all_day) {
         displayWeatherForecast(weather_forcast_info_all_day[0]);
+
         display_card(weather_forcast_info_all_day, 7);
         console.log(document.getElementsByClassName("card"));
         card_listener(document.getElementsByClassName("card"));
@@ -488,14 +537,10 @@ document
       } else {
         console.error("Impossible de récupérer les informations météo");
       }
-
     } else {
       console.error("Aucune ville sélectionnée.");
     }
   });
-
-
-
 
 document
   .getElementById("reset-button")
