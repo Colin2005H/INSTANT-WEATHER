@@ -13,6 +13,6 @@ class WeatherCard {
     }
 
     weatherText(){
-        return weaweatherToText.get(this.weather);
+        return weatherToText.get(this.weather);
     }
 }

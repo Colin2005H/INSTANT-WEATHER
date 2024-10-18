@@ -24,22 +24,12 @@ async function getINSEECodeFromCP(cp) {
 }
 
 const forcastInfoRequest = "https://api.meteo-concept.com/api/forecast/daily?token=7050a2dc76b480256fd4900fccf153567217d6f6fe483ed12f3af3e5dce6d687&insee="
-//RETURN a list of forcast info for each day starting from today up to <nbDay> (max 14 day)
+//RETURN an array of WeatherCard for each day starting from today up to <nbDay> (max 14 day)
 //access days by the array index (sorted chronologically starting from today)
 //Array[
-//0: {
-//     "latitude" : ,         //latitude
-//     "longitude" : ,        //longitude
-//     "weather" : ,          //int to convert using weatherToText.get(int)
-//     "tempMin" : ,         //minimum temperature from the day
-//     "tempMax" : ,         //maximum temperature from the day
-//     "rainProb" : ,        //probability of rain
-//     "rainAmont" : ,       //quantity of rain in mm
-//     "sunshineHour" : ,    //number of hour of sun exposure
-//     "avgWind" : ,         //average wind at 10 m in km/h
-//     "windDirection": ,    //direction the wind is comming in degree
-//    }
-//1: ...
+//0: WeatherCard,  today
+//1: WeatherCard,  tomorrow
+//2: ...
 //
 async function getForcastInfo(codeINSEE, NBDay) {
     if (NBDay < 1 || NBDay > 14) {
@@ -51,19 +41,20 @@ async function getForcastInfo(codeINSEE, NBDay) {
         const promise = await fetch(request);
         const result = await promise.json();
         for (i = 0; i < NBDay; i++) {
-            let dayInfo = {
-                latitude: result.city.latitude, //latitude
-                longitude: result.city.longitude, //longitude
-                weather: result.forecast[i].weather, //int to convert using weatherToText.get(int)
-                tempMin: result.forecast[i].tmin, //minimum temperature from
-                tempMax: result.forecast[i].tmax, //minimum temperature from the day
-                rainProb: result.forecast[i].probarain, //probability of rain
-                rainAmont: result.forecast[i].etp, //quantity of rain in mm
-                sunshineHour: result.forecast[i].sunHours, //number of hour of sun exposure
-                avgWind: result.forecast[i].wind10m, //average wind at 10 m in km/h
-                windDirection: result.forecast[i].dirwind10m, //direction the wind is comming in degree
-            };
-            forcastInfo[i] = dayInfo;
+            let newDay = new WeatherCard
+            (
+                result.city.latitude, //latitude
+                result.city.longitude, //longitude
+                result.forecast[i].weather, //int to convert using weatherToText.get(int)
+                result.forecast[i].tmin, //minimum temperature from
+                result.forecast[i].tmax, //minimum temperature from the day
+                result.forecast[i].probarain, //probability of rain
+                result.forecast[i].etp, //quantity of rain in mm
+                result.forecast[i].sun_hours, //number of hour of sun exposure
+                result.forecast[i].wind10m, //average wind at 10 m in km/h
+                result.forecast[i].dirwind10m, //direction the wind is comming in degree
+            );
+            forcastInfo[i] = newDay;
         }
     } catch (e) {
         console.log("Error went fetching for forcast info :", e);
