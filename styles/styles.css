@@ -116,11 +116,16 @@ nav {
   margin: 0 auto;
 }
 
+.weather-for-the-day {
+  padding: 1vw;
+}
+
 #reset-button,
 #check,
-#search-button {
+#search-button,
+#submit {
   padding: 0.5vw 1vw;
-  font-size: 2vw;
+  font-size: 4vw;
   color: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 2vw;
@@ -130,7 +135,8 @@ nav {
 
 #search-button:hover,
 #check:hover,
-#reset-button:hover {
+#reset-button:hover,
+#submit:hover {
   background-color: white;
   color: black;
   transform: scale(1.05);
@@ -156,7 +162,7 @@ nav {
   margin-right: auto;
   border-radius: 2vw;
   transition: 0.5s;
-  animation: slideInX 1s ease-in-out forwards;
+  animation: slideInX 0.5s ease-in-out forwards;
 }
 
 .fa-down-long {
@@ -182,20 +188,21 @@ nav {
   margin: 0 auto;
 }
 
-.rain-prob {
+.rain-info {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1vw;
   font-size: 5vw;
 }
 
-.second-line-weather {
+.city-name-settings {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 3vw;
+  gap: 1vw;
   font-size: 5vw;
 }
 
@@ -220,8 +227,7 @@ nav {
   margin: 0 2vw;
 }
 
-.fa-up-long,
-.fa-down-long {
+.fa-solid {
   margin: 0 0.5vw;
   border-color: white;
   border-width: 2px;
@@ -231,8 +237,7 @@ nav {
   justify-items: center;
   align-items: center;
   justify-content: center;
-  font-size: 7vw;
-  margin: 1vw;
+  margin-left: 30px;
 }
 
 .rain-prob-text {
@@ -240,7 +245,31 @@ nav {
   text-align: center;
 }
 
-.sun-div {
+.weather-image-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1vw;
+  font-size: 5vw;
+}
+
+.sun-div,
+.wind-div,
+.rain-amount,
+.rain-prob {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding: 2vw;
+  font-size: 5vw;
+}
+
+.more-info {
+  margin-top: 2vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -412,13 +441,17 @@ nav {
   }
 
   #inputCodePostal,
-  #search-button,
-  #resultSelect,
-  #check,
-  #reset-button {
+  #resultSelect {
     font-size: 5vw;
   }
 
+  #search-button,
+  #check,
+  #reset-button,
+  #submit {
+    padding: 1vw 2vw;
+    font-size: 7vw;
+  }
   .block-main {
     width: 100%;
     font-size: 3vw;
@@ -500,4 +533,22 @@ nav {
 
 .car_min {
   color: blue;
+}
+
+.settings-menu {
+  font-size: 5vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
 }
