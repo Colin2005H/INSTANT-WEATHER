@@ -332,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
       weather_to_text.get(weather_forcast_info.weather).includes("Nuageux") ||
       weather_to_text.get(weather_forcast_info.weather).includes("voilé") ||
       weather_to_text.get(weather_forcast_info.weather).includes("nuageux")
+      || weather_to_text.get(weather_forcast_info.weather).includes("Couvert")
     ) {
       imageWeather.src = "image/weather-icon/cloudy.svg";
     } else {
@@ -571,7 +572,7 @@ document.addEventListener("DOMContentLoaded", function () {
           displayResultsCities(codesInsee);
           cardResults = document.getElementById("card-results");
           cardResults.style.display = "flex";
-          cardResults.style.animation = "slideIn 0.5s forwards";
+          cardResults.style.animation = "slideIn 1s forwards";
         } else {
           console.error("Veuillez entrer un code postal valide.");
         }
@@ -636,12 +637,13 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("forecast_cards").style.display = "none";
     });
 
-  document
+  document //settings
     .getElementById("forecast")
     .addEventListener("click", function (event) {
       if (event.target && event.target.id === "settings") {
         document.getElementById("forecast").style.display = "none";
         document.getElementById("forecast_cards").style.display = "none";
+        document.getElementById("head-bar").style.display = "none";
         document.getElementById("search").style.display = "none";
         document.getElementById("card-results").style.display = "none";
 
@@ -655,27 +657,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const settingsForm = document.createElement("form");
         settingsForm.classList.add("settings-form");
 
-        const daysLabel = document.createElement("label");
-        daysLabel.setAttribute("for", "daysRange");
+        const daysLabel = document.createElement("label"); 
+        daysLabel.setAttribute("for", "daysRange"); 
         daysLabel.textContent = "Nombre de jours de prévision :";
 
-        const daysRange = document.createElement("input");
-        daysRange.setAttribute("type", "range");
-        daysRange.setAttribute("id", "daysRange");
+        const daysRange = document.createElement("input"); //slider
+        daysRange.classList.add("days-range");
+        daysRange.setAttribute("type", "range"); 
+        daysRange.setAttribute("id", "daysRange"); 
         daysRange.setAttribute("name", "daysRange");
         daysRange.setAttribute("min", "2");
         daysRange.setAttribute("max", "7");
         daysRange.setAttribute("value", "7");
 
-        const daysValue = document.createElement("span");
+        const daysValue = document.createElement("span"); //value
         daysValue.setAttribute("id", "daysValue");
         daysValue.textContent = "7 jours";
 
-        daysRange.addEventListener("input", function () {
+        daysRange.addEventListener("input", function () { //update value
           daysValue.textContent = `${daysRange.value} jours`;
         });
 
-        const submitButton = document.createElement("i");
+        const submitButton = document.createElement("i"); //submit
         submitButton.classList.add("fa-solid", "fa-check");
         submitButton.setAttribute("id", "submit");
         console.log(submitButton);
@@ -686,15 +689,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
         settingsMenu.appendChild(settingsTitle);
         settingsMenu.appendChild(settingsForm);
+        
+
+        const fieldset = document.createElement("fieldset"); 
+        fieldset.classList.add("fieldset");
+
+        const legend = document.createElement("legend");
+        legend.textContent = "Quelles informations voulez-vous afficher ?";
+        fieldset.appendChild(legend);
+
+        const options = [ //checkbox
+          { id: "windSpeed", label: "Vitesse du vent" },
+          { id: "latLong", label: "Latitude/Longitude" },
+          { id: "rainAmount", label: "Cumul de pluie" },
+          { id: "windDirection", label: "Direction du vent" },
+        ];
+
+        options.forEach(option => { //add checkbox
+          const div = document.createElement("div");
+
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.id = option.id;
+          input.name = option.id;
+          input.checked = true;
+
+
+
+          const label = document.createElement("label"); 
+          label.setAttribute("for", option.id);
+          label.textContent = option.label;
+
+          div.appendChild(input);
+          div.appendChild(label);
+          fieldset.appendChild(div);
+        });
+
+        settingsMenu.appendChild(fieldset);
         settingsMenu.appendChild(submitButton);
+
+
         document.body.appendChild(settingsMenu);
-        settingsMenu.style.display = "flex";
+        settingsMenu.style.animation = "slideInXLeft 0.5s forwards"; 
       }
     });
 
-  document.addEventListener("click", async function (event) {
+  document.addEventListener("click", async function (event) { //submit settings
     if (event.target && event.target.id === "submit") {
       document.getElementById("forecast").style.display = "flex";
+      document.getElementById("head-bar").style.display = "flex";
       document.getElementById("search").style.display = "flex";
       document.getElementById("card-results").style.display = "flex";
 
@@ -714,10 +757,11 @@ document.addEventListener("DOMContentLoaded", function () {
           display_card(
             weather_forcast_info_all_day,
             document.getElementById("daysRange").value
-          );
+          )+1;
           document.querySelector(".settings-menu").remove();
           console.log(document.getElementsByClassName("card"));
           card_listener(document.getElementsByClassName("card"));
+
         } else {
           console.error("Impossible de récupérer les informations météo");
         }
