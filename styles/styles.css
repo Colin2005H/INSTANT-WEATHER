@@ -62,11 +62,12 @@ nav {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  min-width: 80%;
 }
 
 #inputCodePostal {
   border-radius: 2vw;
-  min-width: 20%;
+  min-width: 70%;
   max-width: 50%;
   color: black;
   min-height: 3vw;
@@ -99,6 +100,7 @@ nav {
   animation: morph-in 0.5s ease-in-out;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
 .city-name-image {
@@ -116,11 +118,16 @@ nav {
   margin: 0 auto;
 }
 
+.weather-for-the-day {
+  padding: 1vw;
+}
+
 #reset-button,
 #check,
-#search-button {
+#search-button,
+#submit {
   padding: 0.5vw 1vw;
-  font-size: 2vw;
+  font-size: 4vw;
   color: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 2vw;
@@ -130,7 +137,8 @@ nav {
 
 #search-button:hover,
 #check:hover,
-#reset-button:hover {
+#reset-button:hover,
+#submit:hover {
   background-color: white;
   color: black;
   transform: scale(1.05);
@@ -145,9 +153,7 @@ nav {
 }
 
 #forecast {
-  width: 70%;
-  min-width: 350px;
-  min-height: 300px;
+  width: 100%;
   display: flex;
   color: white;
   flex-direction: column;
@@ -156,7 +162,7 @@ nav {
   margin-right: auto;
   border-radius: 2vw;
   transition: 0.5s;
-  animation: slideInX 1s ease-in-out forwards;
+  animation: slideInX 0.5s ease-in-out forwards;
 }
 
 .fa-down-long {
@@ -182,20 +188,21 @@ nav {
   margin: 0 auto;
 }
 
-.rain-prob {
+.rain-info {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1vw;
   font-size: 5vw;
 }
 
-.second-line-weather {
+.city-name-settings {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 3vw;
+  gap: 1vw;
   font-size: 5vw;
 }
 
@@ -210,8 +217,6 @@ nav {
   transition: 0.5s;
 }
 
-.temperature:hover {
-}
 
 .temperature_min,
 .temperature_max,
@@ -220,8 +225,7 @@ nav {
   margin: 0 2vw;
 }
 
-.fa-up-long,
-.fa-down-long {
+.fa-solid {
   margin: 0 0.5vw;
   border-color: white;
   border-width: 2px;
@@ -231,8 +235,7 @@ nav {
   justify-items: center;
   align-items: center;
   justify-content: center;
-  font-size: 7vw;
-  margin: 1vw;
+  margin-left: 30px;
 }
 
 .rain-prob-text {
@@ -240,7 +243,31 @@ nav {
   text-align: center;
 }
 
-.sun-div {
+.weather-image-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1vw;
+  font-size: 5vw;
+}
+
+.sun-div,
+.wind-div,
+.rain-amount,
+.rain-prob {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding: 2vw;
+  font-size: 5vw;
+}
+
+.more-info {
+  margin-top: 2vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -250,6 +277,7 @@ nav {
 }
 
 #resultSelect {
+  -webkit-appearance: none; /* Supprimer le style par défaut sur les navigateurs WebKit */
   padding: 1vw;
   font-size: 3vw;
   border: none;
@@ -323,6 +351,15 @@ nav {
   }
 }
 
+@keyframes slideInXLeft {
+  0% {
+    transform: translateX(+30vw);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   #head-bar {
@@ -385,6 +422,12 @@ nav {
     width: 80%;
     font-size: 2.5vw;
   }
+  #search{
+    width: 100%;
+  }
+#inputCodePostal, #card-results{ 
+  width: 100%;
+}
 }
 
 @media (max-width: 576px) {
@@ -404,6 +447,12 @@ nav {
     width: 90%;
     font-size: 3vw;
   }
+  #search{
+    width: 100%;
+  }
+#inputCodePostal, #card-results{ 
+  width: 100%;
+}
 }
 
 @media (max-width: 480px) {
@@ -412,13 +461,17 @@ nav {
   }
 
   #inputCodePostal,
-  #search-button,
-  #resultSelect,
-  #check,
-  #reset-button {
+  #resultSelect {
     font-size: 5vw;
   }
 
+  #search-button,
+  #check,
+  #reset-button,
+  #submit {
+    padding: 1vw 2vw;
+    font-size: 7vw;
+  }
   .block-main {
     width: 100%;
     font-size: 3vw;
@@ -438,6 +491,15 @@ nav {
   .temp {
     font-size: 4vw;
   }
+  .card-image-weather {
+    width: 70%;
+  }
+  #search{
+    width: 100%;
+  }
+#inputCodePostal, #card-results{ 
+  width: 100%;
+}
 }
 
 #forecast_cards {
@@ -500,4 +562,50 @@ nav {
 
 .car_min {
   color: blue;
+}
+
+.settings-menu {
+  font-size: 5vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding: 2vw;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  padding: 2vw;
+}
+.days-range {
+  -webkit-appearance: none; 
+  width: 100%; 
+  height: 30px; 
+  background: #ddd; 
+  border-radius: 5px; 
+  outline: none;
+  transition: opacity .15s ease-in-out;
+}
+/* cursor style */
+.days-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px; 
+  height: 40px; 
+  background: var(--bleu_clair); 
+  border-radius: 50%;
+  cursor: pointer;
+}
+.settings-title{
+  font-size: 10vw;
+  
+}
+.fieldset{
+  width: 70%;
 }
