@@ -136,14 +136,14 @@ function displayWeatherForecast(weatherCard) {
     const windDirection = document.createElement("p");
     windDirection.classList.add("wind-direction");
     const directions = [
-      "Nord",
-      "Nord-Est",
-      "Est",
-      "Sud-Est",
-      "Sud",
-      "Sud-Ouest",
-      "Ouest",
-      "Nord-Ouest",
+        "Nord",
+        "Nord-Est",
+        "Est",
+        "Sud-Est",
+        "Sud",
+        "Sud-Ouest",
+        "Ouest",
+        "Nord-Ouest",
     ];
     const index = Math.round(weatherCard.windDirection / 45) % 8;
     windDirection.textContent = directions[index];
@@ -231,7 +231,8 @@ function displayWeatherCard(weatherForcastInfo, NBTotalDay) {
         } else if (
             weatherForcastInfo[day].weatherText().includes("Nuageux") ||
             weatherForcastInfo[day].weatherText().includes("voilé") ||
-            weatherForcastInfo[day].weatherText().includes("nuageux")
+            weatherForcastInfo[day].weatherText().includes("nuageux") ||
+            weatherForcastInfo[day].weatherText().includes("Couvert")
         ) {
             CardImageWeather.src = "image/weather-icon/cloudy.svg";
         } else {
