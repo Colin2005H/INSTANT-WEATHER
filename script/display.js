@@ -31,10 +31,18 @@ function displayWeatherForecast(weatherCard) {
     const cityNameImage = document.createElement("div");
     cityNameImage.classList.add("city-name-image");
 
+    const cityName_settings = document.createElement("div");
+    cityName_settings.classList.add("city-name-settings");
+
     const cityName = document.createElement("p");
     cityName.classList.add("city-name");
     const selectedOption = document.getElementById("resultSelect").selectedOptions[0];
     cityName.textContent = selectedOption.textContent.split(" : ")[0];
+
+    //settings
+    const iconSettings = document.createElement("i");
+    iconSettings.classList.add("fa-solid", "fa-gear");
+    iconSettings.setAttribute("id", "settings");
 
     //temperature
     const temperature = document.createElement("div");
@@ -53,6 +61,9 @@ function displayWeatherForecast(weatherCard) {
     const temperatureMax = document.createElement("p");
     temperatureMax.classList.add("temperature_max");
     temperatureMax.textContent = `${weatherCard.tempMax}°C`;
+
+    const weatherImageText = document.createElement("div");
+    weatherImageText.classList.add("weather-image-text");
 
     //weather icon
     const imageWeather = document.createElement("img");
@@ -86,43 +97,101 @@ function displayWeatherForecast(weatherCard) {
     rainProb.classList.add("rain-prob");
     const iconRainProb = document.createElement("i");
     iconRainProb.classList.add("fa-solid", "fa-cloud-rain");
+
     //rain-prob value
     const rainProbText = document.createElement("p");
     rainProbText.classList.add("rain-prob-text");
     rainProbText.textContent = `${weatherCard.rainProb}%`;
+
+    //rain-amount
+    const rainAmount = document.createElement("div");
+    rainAmount.classList.add("rain-amount");
+    const iconRainAmount = document.createElement("i");
+    iconRainAmount.classList.add("fa-solid", "fa-droplet");
+    const rainAmountText = document.createElement("p");
+    rainAmountText.classList.add("rain-amount-text");
+    rainAmountText.textContent = `${weatherCard.rainAmont}mm`;
 
     //sun-hour
     const sunDiv = document.createElement("div");
     sunDiv.classList.add("sun-div");
     const iconSun = document.createElement("i");
     iconSun.classList.add("fa-regular", "fa-sun");
+
     //sun-hour value
     const sunHours = document.createElement("p");
     sunHours.classList.add("sun-hours");
     sunHours.textContent = `${weatherCard.sunshineHour}h`;
 
+    //wind
+    const windDiv = document.createElement("div");
+    windDiv.classList.add("wind-div");
+    const iconWind = document.createElement("i");
+    iconWind.classList.add("fa-solid", "fa-wind");
+    //wind speed
+    const windSpeed = document.createElement("p");
+    windSpeed.classList.add("wind-speed");
+    windSpeed.textContent = `${weatherCard.avgWind}km/h`;
+    //wind dirction
+    const windDirection = document.createElement("p");
+    windDirection.classList.add("wind-direction");
+    const directions = [
+      "Nord",
+      "Nord-Est",
+      "Est",
+      "Sud-Est",
+      "Sud",
+      "Sud-Ouest",
+      "Ouest",
+      "Nord-Ouest",
+    ];
+    const index = Math.round(weatherCard.windDirection / 45) % 8;
+    windDirection.textContent = directions[index];
+
+    const iconWindDirection = document.createElement("i");
+    iconWindDirection.classList.add("fa-solid", "fa-compass");
+    iconWindDirection.style.transform = `rotate(${weatherCard.windDirection}deg)`;
+
+    const moreInfo = document.createElement("div");
+    moreInfo.classList.add("more-info");
+
     //Add element to DOM
     sunDiv.appendChild(iconSun);
     sunDiv.appendChild(sunHours);
+
+    rainProb.appendChild(iconRainProb);
+    rainProb.appendChild(rainProbText);
+
+    rainAmount.appendChild(iconRainAmount);
+    rainAmount.appendChild(rainAmountText);
+
+    windDiv.appendChild(iconWind);
+    windDiv.appendChild(windSpeed);
+    windDiv.appendChild(iconWindDirection);
+    windDiv.appendChild(windDirection);
 
     temperature.appendChild(iconDown);
     temperature.appendChild(temperatureMin);
     temperature.appendChild(iconUp);
     temperature.appendChild(temperatureMax);
 
-    cityNameImage.appendChild(imageWeather);
-    cityNameImage.appendChild(cityName);
+    const rainInfo = document.createElement("div");
+    rainInfo.classList.add("rain-info");
+    rainInfo.appendChild(rainProb);
+    rainInfo.appendChild(rainAmount);
 
-    rainProb.appendChild(iconRainProb);
-    rainProb.appendChild(rainProbText);
+    cityName_settings.appendChild(cityName);
+    cityName_settings.appendChild(iconSettings);
 
-    secondLineWeather.appendChild(rainProb);
-    secondLineWeather.appendChild(sunDiv);
+    weatherImageText.appendChild(imageWeather);
+    weatherImageText.appendChild(weather);
 
-    weatherForTheDay.appendChild(cityNameImage);
+    weatherForTheDay.appendChild(cityName_settings);
+    weatherForTheDay.appendChild(weatherImageText);
     weatherForTheDay.appendChild(temperature);
-    weatherForTheDay.appendChild(weather);
-    weatherForTheDay.appendChild(secondLineWeather);
+    weatherForTheDay.appendChild(rainInfo);
+    weatherForTheDay.appendChild(sunDiv);
+    weatherForTheDay.appendChild(windDiv);
 
     forecastDiv.appendChild(weatherForTheDay);
 
@@ -134,6 +203,7 @@ function displayWeatherForecast(weatherCard) {
 
 function displayWeatherCard(weatherForcastInfo, NBTotalDay) {
     const forecastCards = document.getElementById("forecast_cards");
+    forecastCards.innerHTML = "";
     for (day = 0; day < NBTotalDay; day++) {
         card = document.createElement("div");
         card.classList.add("card");
@@ -204,5 +274,4 @@ function displayWeatherCard(weatherForcastInfo, NBTotalDay) {
         temp.appendChild(max);
         forecastCards.appendChild(card);
     }
-
 }

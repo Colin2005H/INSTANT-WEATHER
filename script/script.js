@@ -48,6 +48,9 @@ document
     }
   });
 
+let weatherForcastInfoAllDay = [];
+let numberOfDayDisplayed = 1;
+
 document
   .getElementById("check")
   .addEventListener("click", async function checkBouton() {
@@ -78,20 +81,6 @@ document
     document.getElementById("forecast").innerHTML = "";
     document.getElementById("forecast_cards").style.display = "none";
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document
   .getElementById("forecast")
@@ -135,7 +124,6 @@ document
       const submitButton = document.createElement("i");
       submitButton.classList.add("fa-solid", "fa-check");
       submitButton.setAttribute("id", "submit");
-      console.log(submitButton);
 
       settingsForm.appendChild(daysLabel);
       settingsForm.appendChild(daysRange);
@@ -162,19 +150,13 @@ document.addEventListener("click", async function (event) {
       document.getElementById("search-button").style.display = "none";
       document.getElementById("reset-button").style.display = "flex";
       document.getElementById("forecast_cards").style.display = "flex";
-      weather_forcast_info_all_day = await get_forcast_info(inseeCode, 7);
-      console.log(weather_forcast_info_all_day);
 
-      if (weather_forcast_info_all_day) {
-        displayWeatherForecast(weather_forcast_info_all_day[0]);
 
-        display_card(
-          weather_forcast_info_all_day,
-          document.getElementById("daysRange").value
-        );
+      if (weatherForcastInfoAllDay) {
+        displayWeatherForecast(weatherForcastInfoAllDay[0]);
+        displayWeatherCard(weatherForcastInfoAllDay, document.getElementById("daysRange").value);
         document.querySelector(".settings-menu").remove();
-        console.log(document.getElementsByClassName("card"));
-        card_listener(document.getElementsByClassName("card"));
+        cardListener(document.getElementsByClassName("card"));
       } else {
         console.error("Impossible de récupérer les informations météo");
       }
