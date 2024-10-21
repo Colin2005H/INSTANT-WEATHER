@@ -19,7 +19,7 @@ function displayResultsCities(codeINSEE) {
 
 
 //Update main weather forcast display
-function displayWeatherForecast(weatherCard) {
+function displayWeatherForecast(weatherCard, windSpeedB, latLongB, rainAmontB, windDirectionB) {
 
     const forecastDiv = document.getElementById("forecast");
 
@@ -107,10 +107,12 @@ function displayWeatherForecast(weatherCard) {
     const rainAmount = document.createElement("div");
     rainAmount.classList.add("rain-amount");
     const iconRainAmount = document.createElement("i");
-    iconRainAmount.classList.add("fa-solid", "fa-droplet");
     const rainAmountText = document.createElement("p");
     rainAmountText.classList.add("rain-amount-text");
-    rainAmountText.textContent = `${weatherCard.rainAmont}mm`;
+    if(rainAmontB){
+        iconRainAmount.classList.add("fa-solid", "fa-droplet");
+        rainAmountText.textContent = `${weatherCard.rainAmont}mm`;
+    }
 
     //sun-hour
     const sunDiv = document.createElement("div");
@@ -127,11 +129,16 @@ function displayWeatherForecast(weatherCard) {
     const windDiv = document.createElement("div");
     windDiv.classList.add("wind-div");
     const iconWind = document.createElement("i");
-    iconWind.classList.add("fa-solid", "fa-wind");
+    
     //wind speed
     const windSpeed = document.createElement("p");
     windSpeed.classList.add("wind-speed");
-    windSpeed.textContent = `${weatherCard.avgWind}km/h`;
+    if(windSpeedB){
+        windSpeed.textContent = `${weatherCard.avgWind}km/h`;
+        iconWind.classList.add("fa-solid", "fa-wind");
+    }
+    
+    
     //wind dirction
     const windDirection = document.createElement("p");
     windDirection.classList.add("wind-direction");
@@ -146,11 +153,16 @@ function displayWeatherForecast(weatherCard) {
         "Nord-Ouest",
     ];
     const index = Math.round(weatherCard.windDirection / 45) % 8;
-    windDirection.textContent = directions[index];
-
     const iconWindDirection = document.createElement("i");
-    iconWindDirection.classList.add("fa-solid", "fa-compass");
-    iconWindDirection.style.transform = `rotate(${weatherCard.windDirection}deg)`;
+    if(windDirectionB){
+        windDirection.textContent = directions[index];
+        iconWindDirection.classList.add("fa-solid", "fa-compass");
+        iconWindDirection.style.transform = `rotate(${weatherCard.windDirection}deg)`;
+    }
+    
+
+    
+    
 
     const moreInfo = document.createElement("div");
     moreInfo.classList.add("more-info");
