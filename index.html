@@ -11,8 +11,16 @@
       href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap"
       rel="stylesheet"
     />
-    <script defer src="script/script.js"></script>
     <script src="https://kit.fontawesome.com/04e34c72ac.js"></script>
+
+    <!-- ALL JS file from script folder -->
+    <script  src="script/weather_to_text.js"></script>
+    <script  src="script/WeatherCard.js"></script>
+    <script  src="script/api_function.js"></script>
+    <script  src="script/display.js"></script>
+
+    <script defer src="script/script.js"></script>
+    
     <title>Instant Weather</title>
   </head>
   <body>
@@ -26,10 +34,9 @@
       <label id="labelCodePostal" style="display: none">Code Postal :</label>
       <input
         id="inputCodePostal"
-        type="number"
+        type="text" 
         placeholder="Code postal"
         maxlength="5"
-        pattern="\d{5}"
         title="Veuillez entrer un code postal de 5 chiffres"
       />
       <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
