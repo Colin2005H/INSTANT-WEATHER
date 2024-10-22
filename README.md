@@ -14,9 +14,13 @@ Welcome to **INSTANT WEATHER**! This project provides a quick and easy way to ch
 - **CSS**: For styling the application. 🎨
 - **HTML**: The structure of the web page. 🌐
 
-## 📸 Screenshots
+## 📸 Screenshot
 
 ![Interface Screenshot](screenshots/interface.png)
+
+## API
+
+- [Méteo-Concept API](https://api.meteo-concept.com)
 
 ## © Credits
 
