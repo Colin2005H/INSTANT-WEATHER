@@ -77,12 +77,12 @@ function displayWeatherForecast(weatherCard, windSpeedB, latLongB, rainAmontB, w
     imageWeather.classList.add("image-weather");
 
     if (weatherCard.weatherText().includes("Soleil")) {
-        imageWeather.src = "image/weather-icon/clear-day.svg";
+        imageWeather.src = "image/weather-icon/sun.svg";
     } else if (
         weatherCard.weatherText().includes("pluie") ||
         weatherCard.weatherText().includes("Pluie")
     ) {
-        imageWeather.src = "image/weather-icon/rainy-3.svg";
+        imageWeather.src = "image/weather-icon/rain.svg";
     } else if (
         weatherCard.weatherText().includes("Nuageux") ||
         weatherCard.weatherText().includes("voilé") ||
@@ -242,12 +242,12 @@ function displayWeatherCard(weatherForcastInfo, NBTotalDay) {
         CardImageWeather.classList.add("card-image-weather");
 
         if (weatherForcastInfo[day].weatherText().includes("Soleil")) {
-            CardImageWeather.src = "image/weather-icon/clear-day.svg";
+            CardImageWeather.src = "image/weather-icon/sun.svg";
         } else if (
             weatherForcastInfo[day].weatherText().includes("pluie") ||
             weatherForcastInfo[day].weatherText().includes("Pluie")
         ) {
-            CardImageWeather.src = "image/weather-icon/rainy-3.svg";
+            CardImageWeather.src = "image/weather-icon/rain.svg";
         } else if (
             weatherForcastInfo[day].weatherText().includes("Nuageux") ||
             weatherForcastInfo[day].weatherText().includes("voilé") ||

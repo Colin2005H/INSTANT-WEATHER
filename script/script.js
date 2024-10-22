@@ -62,11 +62,15 @@ document
   .addEventListener("click", async function checkBouton() {
     const selectedOption =
       document.getElementById("resultSelect").selectedOptions[0];
+      
     if (selectedOption) {
       document.getElementById("search-button").style.display = "none";
       document.getElementById("reset-button").style.display = "flex";
       document.getElementById("forecast_cards").style.display = "flex";
-      weatherForcastInfoAllDay = await getForcastInfo(selectedOption, 8);
+      console.log(selectedOption);
+      weatherForcastInfoAllDay = await getForcastInfo(selectedOption.value, 8);
+
+      console.log(weatherForcastInfoAllDay);
 
       if (weatherForcastInfoAllDay) {
         displayWeatherForecast(weatherForcastInfoAllDay[0], false, false, false, false);

@@ -114,13 +114,11 @@ nav {
 }
 
 .image-weather {
-  width: 50%;
-  margin: 0 auto;
+  margin: 0;
+  width: 30%;
+  height: 30%;
 }
 
-.weather-for-the-day {
-  padding: 1vw;
-}
 #reset-button,
 #check,
 #search-button,
@@ -179,13 +177,10 @@ nav {
 
 .weather {
   font-size: 7vw;
-  text-align: center;
+  position: relative;
+  left: 0;
 }
 
-.image-weather {
-  width: 50%;
-  margin: 0 auto;
-}
 
 .rain-info {
   display: flex;
@@ -201,7 +196,6 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1vw;
   font-size: 5vw;
 }
 
@@ -248,7 +242,6 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 1vw;
   font-size: 5vw;
 }
 .sun-div,
