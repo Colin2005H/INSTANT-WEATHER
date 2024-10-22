@@ -69,7 +69,7 @@ document
       weatherForcastInfoAllDay = await getForcastInfo(selectedOption, 8);
 
       if (weatherForcastInfoAllDay) {
-        displayWeatherForecast(weatherForcastInfoAllDay[0], true, true, true, true);
+        displayWeatherForecast(weatherForcastInfoAllDay[0], false, false, false, false);
         displayWeatherCard(weatherForcastInfoAllDay, 0);
         cardListener(document.getElementsByClassName("card"));
       }
