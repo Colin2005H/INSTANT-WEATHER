@@ -607,3 +607,12 @@ width: 100%;
 .fieldset{
   width: 70%;
 }
+
+.latitude-longitude{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  font-size: 5vw;
+}

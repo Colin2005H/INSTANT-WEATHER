@@ -39,6 +39,13 @@ function displayWeatherForecast(weatherCard, windSpeedB, latLongB, rainAmontB, w
     const selectedOption = document.getElementById("resultSelect").selectedOptions[0];
     cityName.textContent = selectedOption.textContent.split(" : ")[0];
 
+    //latitude and longitude
+    const latitudeLongitude = document.createElement("p");
+    latitudeLongitude.classList.add("latitude-longitude");
+    if(latLongB){
+        latitudeLongitude.textContent = `Latitude: ${weatherCard.latitude}°, Longitude: ${weatherCard.longitude}°`;
+    }
+
     //settings
     const iconSettings = document.createElement("i");
     iconSettings.classList.add("fa-solid", "fa-gear");
@@ -199,6 +206,7 @@ function displayWeatherForecast(weatherCard, windSpeedB, latLongB, rainAmontB, w
     weatherImageText.appendChild(weather);
 
     weatherForTheDay.appendChild(cityName_settings);
+    weatherForTheDay.appendChild(latitudeLongitude);
     weatherForTheDay.appendChild(weatherImageText);
     weatherForTheDay.appendChild(temperature);
     weatherForTheDay.appendChild(rainInfo);
