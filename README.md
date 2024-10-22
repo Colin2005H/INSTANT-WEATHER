@@ -16,6 +16,8 @@ Welcome to **INSTANT WEATHER**! This project provides a quick and easy way to ch
 
 ## 📸 Screenshots
 
+![Interface Screenshot](screenshots/interface.png)
+
 ## © Credits
 
 Made with ❤️ by [Colin.H](https://github.com/Colin2005H), [Alban.G](https://github.com/poussone)🐥, [Noa.F](https://github.com/Nonosthecrack)
