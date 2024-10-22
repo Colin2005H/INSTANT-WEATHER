@@ -1,4 +1,4 @@
-# ☀️ INSTANT WEATHER 🌧️
+# ☀️ [INSTANT WEATHER](https://colin2005h.github.io/INSTANT-WEATHER/) 🌧️
 
 Welcome to **INSTANT WEATHER**! This project provides a quick and easy way to check the weather anywhere in France. 🇫🇷
 
