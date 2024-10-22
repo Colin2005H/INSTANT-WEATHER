@@ -3,43 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Instant Weather - Obtenez des prévisions météorologiques en un instant !" />
+    <meta
+      name="description"
+      content="Instant Weather - Obtenez des prévisions météorologiques en un instant !" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="shortcut icon" href="image/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <script src="https://kit.fontawesome.com/04e34c72ac.js"></script>
 
     <!-- ALL JS file from script folder -->
-    <script  src="script/weather_to_text.js"></script>
-    <script  src="script/WeatherCard.js"></script>
-    <script  src="script/api_function.js"></script>
-    <script  src="script/display.js"></script>
+    <script src="script/weather_to_text.js"></script>
+    <script src="script/WeatherCard.js"></script>
+    <script src="script/api_function.js"></script>
+    <script src="script/display.js"></script>
 
     <script defer src="script/script.js"></script>
-    
+
     <title>Instant Weather</title>
   </head>
   <body>
     <nav>
       <div id="head-bar">
-        <img src="image/icon.png" alt="logo" id="logo" />
+        <img src="image/icon.png" alt="Instant Weather Logo" id="logo" />
         <h1 id="title">Instant Weather</h1>
       </div>
     </nav>
     <div id="search">
-      <label id="labelCodePostal" style="display: none">Code Postal :</label>
+      <label
+        id="labelCodePostal"
+        for="inputCodePostal"
+        style="
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+          clip: rect(0, 0, 0, 0);
+          overflow: hidden;
+        ">
+        Code Postal :
+      </label>
       <input
         id="inputCodePostal"
-        type="text" 
+        type="text"
         placeholder="Code postal"
         maxlength="5"
-        title="Veuillez entrer un code postal de 5 chiffres"
-      />
+        title="Veuillez entrer un code postal de 5 chiffres" />
+
       <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
       <i class="fa-solid fa-x" id="reset-button" style="display: none"></i>
     </div>
