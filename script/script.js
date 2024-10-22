@@ -153,7 +153,7 @@ document
         fieldset.appendChild(legend);
         const options = [ //checkbox
           { id: "windSpeed", label: "Vitesse du vent" , checkedStatus : windSpeedB},
-          { id: "latLong", label: "Latitude/Longitude", checkedStatus : latLongB},
+          { id: "latLong", label: "Latitude/Longitude", checkedStatus : latLongB },
           { id: "rainAmount", label: "Cumul de pluie", checkedStatus : rainAmontB},
           { id: "windDirection", label: "Direction du vent", checkedStatus : windDirectionB},
         ];

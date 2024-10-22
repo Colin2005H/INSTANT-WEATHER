@@ -108,7 +108,6 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 6vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -122,7 +121,8 @@ nav {
 #reset-button,
 #check,
 #search-button,
-#submit {
+#submit,
+#settings {
   padding: 0.5vw 1vw;
   font-size: 4vw;
   color: rgba(255, 255, 255, 0.7);
@@ -135,7 +135,8 @@ nav {
 #search-button:hover,
 #check:hover,
 #reset-button:hover,
-#submit:hover {
+#submit:hover,
+#settings:hover {
   background-color: white;
   color: black;
   transform: scale(1.05);
@@ -523,14 +524,17 @@ width: 100%;
   transition: 0.5s;
 }
 
-.card:hover {
-  transform: translate3d(0, -10px, 0);
-  background-color: white;
-}
 
 .card-image-weather {
   width: 50%;
   margin: 0 auto;
+  transition: 0.5s;
+}
+
+.card-image-weather:hover {
+  transform: scale(1.05);
+  
+  
 }
 
 .card_day {
@@ -606,6 +610,6 @@ width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1vw;
-  font-size: 5vw;
+  font-size: 4vw;
+  margin: O;
 }
