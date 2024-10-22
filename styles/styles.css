@@ -511,7 +511,6 @@ width: 100%;
   flex-direction: row;
   gap: 3vw;
   overflow-x: auto;
-  scroll-snap-align: x proximity;
   padding: 2vw;
   white-space: nowrap;
   transition: 1s;
