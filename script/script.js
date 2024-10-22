@@ -50,6 +50,12 @@ document
 
 let weatherForcastInfoAllDay = [];
 let numberOfDayDisplayed = 1;
+let windSpeedB = false;
+let latLongB = false;
+let rainAmontB = false;
+let windDirectionB = false;
+
+
 
 document
   .getElementById("check")
@@ -57,15 +63,14 @@ document
     const selectedOption =
       document.getElementById("resultSelect").selectedOptions[0];
     if (selectedOption) {
-      const inseeCode = selectedOption.value;
       document.getElementById("search-button").style.display = "none";
       document.getElementById("reset-button").style.display = "flex";
       document.getElementById("forecast_cards").style.display = "flex";
-      weatherForcastInfoAllDay = await getForcastInfo(selectedOption, 7);
+      weatherForcastInfoAllDay = await getForcastInfo(selectedOption, 8);
 
       if (weatherForcastInfoAllDay) {
         displayWeatherForecast(weatherForcastInfoAllDay[0], true, true, true, true);
-        displayWeatherCard(weatherForcastInfoAllDay, 7);
+        displayWeatherCard(weatherForcastInfoAllDay, 0);
         cardListener(document.getElementsByClassName("card"));
       }
     }
@@ -114,13 +119,13 @@ document
         daysRange.setAttribute("type", "range");
         daysRange.setAttribute("id", "daysRange");
         daysRange.setAttribute("name", "daysRange");
-        daysRange.setAttribute("min", "2");
+        daysRange.setAttribute("min", "1");
         daysRange.setAttribute("max", "7");
-        daysRange.setAttribute("value", "7");
+        daysRange.setAttribute("value", numberOfDayDisplayed);
 
         const daysValue = document.createElement("span");
         daysValue.setAttribute("id", "daysValue");
-        daysValue.textContent = "7 jours";
+        daysValue.textContent = numberOfDayDisplayed + " jours";
 
         daysRange.addEventListener("input", function () {
           daysValue.textContent = `${daysRange.value} jours`;
@@ -143,10 +148,10 @@ document
         legend.textContent = "Quelles informations voulez-vous afficher ?";
         fieldset.appendChild(legend);
         const options = [ //checkbox
-          { id: "windSpeed", label: "Vitesse du vent" },
-          { id: "latLong", label: "Latitude/Longitude" },
-          { id: "rainAmount", label: "Cumul de pluie" },
-          { id: "windDirection", label: "Direction du vent" },
+          { id: "windSpeed", label: "Vitesse du vent" , checkedStatus : windSpeedB},
+          { id: "latLong", label: "Latitude/Longitude", checkedStatus : latLongB},
+          { id: "rainAmount", label: "Cumul de pluie", checkedStatus : rainAmontB},
+          { id: "windDirection", label: "Direction du vent", checkedStatus : windDirectionB},
         ];
         options.forEach(option => { //add checkbox
           const div = document.createElement("div");
@@ -154,7 +159,7 @@ document
           input.type = "checkbox";
           input.id = option.id;
           input.name = option.id;
-          input.checked = true;
+          input.checked = option.checkedStatus;
           const label = document.createElement("label"); 
           label.setAttribute("for", option.id);
           label.textContent = option.label;
@@ -188,12 +193,18 @@ document.addEventListener("click", async function (event) {
 
 
       if (weatherForcastInfoAllDay) {
-        windSpeed = document.getElementById("windSpeed").checked;
-        latLong = document.getElementById("latLong").checked;
-        rainAmont = document.getElementById("rainAmount").checked;
-        windDirection = document.getElementById("windDirection").checked;
-        displayWeatherForecast(weatherForcastInfoAllDay[0], windSpeed, latLong, rainAmont, windDirection);
-        displayWeatherCard(weatherForcastInfoAllDay, document.getElementById("daysRange").value)+ 1;
+        windSpeedB = document.getElementById("windSpeed").checked;
+        latLongB = document.getElementById("latLong").checked;
+        rainAmontB = document.getElementById("rainAmount").checked;
+        windDirectionB = document.getElementById("windDirection").checked;
+        numberOfDayDisplayed= document.getElementById("daysRange").value;
+        displayWeatherForecast(weatherForcastInfoAllDay[0], windSpeedB, latLongB, rainAmontB, windDirectionB);
+        if(numberOfDayDisplayed > 1){
+          displayWeatherCard(weatherForcastInfoAllDay, numberOfDayDisplayed);
+        }else{
+          displayWeatherCard(weatherForcastInfoAllDay, 0);
+        }
+        
         document.querySelector(".settings-menu").remove();
         cardListener(document.getElementsByClassName("card"));
       } else {
